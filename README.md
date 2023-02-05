@@ -2,6 +2,8 @@
 
 <img src="docs/assets/logo.transparent.png" width="300">
 
-Welcome to the StrucEng Library. Browse https://github.com/StrucEng-Library-kfmresearch for a list of our open source repositories.
+Welcome to the StrucEng Library. 
+
+Browse https://github.com/StrucEng-Library-kfmresearch for a list of our open source repositories.
 
 For a tutorial on how to make changes on the website, please read [tutorial_edit_website.md](./tutorial_edit_website.md).
