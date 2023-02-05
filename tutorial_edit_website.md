@@ -1,7 +1,7 @@
 
 # Struc_Eng_Library_Website
 
-This website is built with [mkdocs](https://www.mkdocs.org/). A [Github Runner](https://github.com/kfmResearch-NumericsTeam/Struc_Eng_Library_Website/actions/workflows/deploy.yml) will redeploy the website on a new commit.
+This website is built with [mkdocs](https://www.mkdocs.org/). A [Github Runner](https://github.com/StrucEng-Library-kfmresearch/strucenglib-website/actions/workflows/deploy.yml) redeploys the website on a new commit.
 
 
 ## Files and Directories
@@ -51,8 +51,3 @@ mkdocs serve
 
 ```
 
-### Installed Runners
-- [![Build Website](https://github.com/kfmResearch-NumericsTeam/Struc_Eng_Library_Website/actions/workflows/deploy.yml/badge.svg)](https://github.com/kfmResearch-NumericsTeam/Struc_Eng_Library_Website/actions/workflows/deploy.yml): Builds website with mkdocs  
-- [![pages-build-deployment](https://github.com/kfmResearch-NumericsTeam/Struc_Eng_Library_Website/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/kfmResearch-NumericsTeam/Struc_Eng_Library_Website/actions/workflows/pages/pages-build-deployment): Deploys website with Github Pages  
-
-For a successful change and thus update on the website, both runners have to succeed.
