@@ -51,3 +51,6 @@ mkdocs serve
 
 ```
 
+## Runners
+- Build Website: Builds mkdocs, commits changes to github-pages branch
+- pages-build-deployment: Pushes github pages to server
