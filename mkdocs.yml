@@ -3,8 +3,8 @@ site_url: https://strucenglib.ethz.ch
 site_description: >-
   StrucEng Library
 
-repo_name: kfmResearch-NumericsTeam/Struc_Eng_Library_Website
-repo_url: https://github.com/kfmResearch-NumericsTeam/Struc_Eng_Library_Website
+repo_name: StrucEng-Library-kfmresearch/strucenglib-website
+repo_url: https://github.com/StrucEng-Library-kfmresearch/strucenglib-website
 
 extra_javascript:
   - assets/website/code.js
@@ -62,7 +62,7 @@ extra:
   generator: false
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/kfmResearch-NumericsTeam/Struc_Eng_Library_Website
+      link: https://github.com/StrucEng-Library-kfmresearch
       name: StrucEng Library on Github
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/
@@ -94,7 +94,7 @@ nav:
           - 'Troubleshooting':   strucenglib_plugin/usage/troubleshooting.md
       - Developer:
           Documentation: strucenglib_plugin/developer/developer.md
-          Changelog: https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in/blob/master/CHANGELOG
-          Source Code: https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in
+          Changelog: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/blob/master/CHANGELOG
+          Source Code: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin
 
   - About: about.md
