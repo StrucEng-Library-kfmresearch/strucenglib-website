@@ -1,0 +1,2 @@
+# StrucEng Library for Abaqus
+

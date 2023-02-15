@@ -82,19 +82,22 @@ markdown_extensions:
 # Website navigation:
 nav:
   - Home: index.md
-  - 'See in Action': action.md
-  - 'Rhino 3D Plugin':
-      - Home: strucenglib_plugin/home.md
-      - Screenshots: strucenglib_plugin/screenshots.md
+  - 'See in Action':
+     - Action: action.md
+     - Home: strucenglib_plugin/home.md
+     - Screenshots: strucenglib_plugin/screenshots.md
+  - 'Use with Abaqus':
       - Installation:
+          - Home: abaqus/home_abaqus.md
           - Prerequisites: strucenglib_plugin/getting_started.md
           - Installation: strucenglib_plugin/installation.md
-      - Usage Guide:
-          - 'StrucEngLib Server': strucenglib_plugin/server.md
-          - 'Troubleshooting':   strucenglib_plugin/usage/troubleshooting.md
-      - Developer:
-          Documentation: strucenglib_plugin/developer/developer.md
-          Changelog: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/blob/master/CHANGELOG
-          Source Code: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin
-
+  - 'Use with Ansys':
+          - Home: strucenglib_plugin/home.md
+  - Usage Guides:
+     - 'StrucEngLib Server': strucenglib_plugin/server.md
+     - 'Troubleshooting':   strucenglib_plugin/usage/troubleshooting.md
+  - 'Developer':
+      - Documentation: strucenglib_plugin/developer/developer.md
+      - Changelog: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/blob/master/CHANGELOG
+      -  Source Code: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin
   - About: about.md
