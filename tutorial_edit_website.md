@@ -23,7 +23,9 @@ In the example image above, the navigation entry 'See in Action' will serve the 
 
 ## Edit a Page
 The content pages are written in markdown and are available in the [./docs](./docs) folder.
-Edit a markdown file in the Github file editor. Changes are redeployed upon a new commit. The status of the update of the changes can be found under the Github tab "Actions".
+Edit a markdown file in the Github file editor. Changes are redeployed upon a new commit. The status of the update of the changes can be found under the Github tab [Action](https://github.com/StrucEng-Library-kfmresearch/strucenglib-website/actions)
+
+
 
 <p align="left">
 <img src="https://user-images.githubusercontent.com/2311941/196965370-33f40404-eb83-4015-a1c6-c1cc770aa6ff.png" alt="strucenglib" width="400"/>
