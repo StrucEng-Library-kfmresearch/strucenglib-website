@@ -96,5 +96,7 @@ nav:
           Documentation: strucenglib_plugin/developer/developer.md
           Changelog: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/blob/master/CHANGELOG
           Source Code: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin
+  - 'StrucEng Library':
+      - Home: strucenglib_plugin/home.md          
 
   - About: about.md
