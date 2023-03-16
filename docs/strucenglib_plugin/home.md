@@ -1,6 +1,6 @@
 # StrucEng Library Rhinoceros Plugin
 
-The StrucEng Library Plugin unites and extends Finite Element Analysis of [Compas FEA](https://compas.dev/compas_fea/latest/) into [Rhinoceros 3D](https://www.rhino3d.com/).
+The StrucEng Library Plugin unites and extends Finite Element Analysis of [Compas FEA](https://compas.dev/compas_fea/latest/) into [Rhinoceros 3D](https://www.rhino3d.com/). This is a change.
 
 It features Rhino user-interfaces and bundles various FE models to support the structural analysis of reinforced concrete and masonry.
 
