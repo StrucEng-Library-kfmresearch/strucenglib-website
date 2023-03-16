@@ -97,6 +97,8 @@ nav:
           Changelog: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/blob/master/CHANGELOG
           Source Code: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin
   - 'StrucEng Library Snippets':
-      - Home: strucenglib_snippets/Sandwichmodel.md          
+      - Home: 
+      - Sandwichmodel: 
+          - Mechanical Model: strucenglib_snippets/Sandwichmodel.md 
 
   - About: about.md
