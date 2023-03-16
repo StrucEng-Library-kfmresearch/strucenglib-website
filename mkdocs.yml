@@ -82,7 +82,7 @@ markdown_extensions:
 # Website navigation:
 nav:
   - Home: index.md
-  - 'See in Actin': action.md
+  - 'See in Action': action.md
   - 'Rhino 3D Plugin':
       - Home: strucenglib_plugin/home.md
       - Screenshots: strucenglib_plugin/screenshots.md
