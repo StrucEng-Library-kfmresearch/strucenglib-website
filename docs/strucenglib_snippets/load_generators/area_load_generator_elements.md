@@ -55,17 +55,3 @@ Remote and local invocations accept the same set of compas FEA parameters.
 The server component is hosted on [GitHub](https://github.com/kfmResearch-NumericsTeam/Struc_Eng_Library_Server).
 
 This page shows how different types of **Element** objects are added and edited with the **Structure** object, here the example **Structure** object is given as ``mdl``. The **Element** objects represent linear, surface and solid finite elements connecting different nodes of the structure.
-
-**Element** objects are added to the **Structure** object with the ``.add_element()`` and ``.add_elements()`` methods, by giving the list(s) of nodes that the element(s) connect to, as well as the element type as a string. If a single element is being added with ``.add_element()``, then the node numbers are given in ``nodes``, while if multiple elements are added with ``.add_elements()``, lists of nodes are given through ``elements``. The **Element** objects are added to the ``.elements`` dictionary of the **Structure**, from the classes found in module **compas_fea.structure.element**, where the class names match the string entered for the element type ``type``.
-
-The element types include, amongst others, 1D elements: **SpringElement**, **BeamElement**, **TrussElement**, 2D elements: **ShellElement**, **MembraneElement**, and 3D elements: **PentahedronElement**, **TetrahedronElement**, **HexahedronElement**. **Note**: to date, not all elements types are consistently available across all FE solvers, Abaqus, OpenSees and Ansys.
-
-As with nodes, the elements will be added with integer keys numbered sequentially starting from 0. **Note**: currently no more than one element can exist for the same collection of nodes, i.e. no overlapping elements are allowed. If you use ``.add_element()`` and an element already exists, nothing else will be added.
-
-.. code-block:: python
-
-    mdl.add_element(nodes=[0, 1, 4], type='ShellElement')  # a single element added
-
-    mdl.add_elements(elements=[[0, 4], [1, 4], [2, 4], [3, 4]], type='BeamElement')  # multiple elements added
-
-For Abaqus, adding elements will also create a set for each individual element. So for example, when element 4 is written to the input file, an element set named **element_4** (corresponding to element number 5 in Abaqus) will also be created. The utility of this is that individual elements can be referenced to whenever needed, which is useful for selectively assigning a thickness, material, section or orientation to specific elements by way of their number (see some of the examples for demonstrations of this).
