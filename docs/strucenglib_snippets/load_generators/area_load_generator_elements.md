@@ -7,7 +7,9 @@ The load area can be defined using a polyline in Rhino. The polyline is to be st
 ![BSP_area_load_generator](https://user-images.githubusercontent.com/49633262/226637930-a71a9aa0-46d4-4235-89be-0b1a2d3f2793.png)
 
 ## Determine the numbers of the loaded elements
-Coming soon
+A list of loaded elements (corresponding to the elements whose geometric center lies within the polyline) are calculated using the function ``area_load_generator_elements`` where the string ``layer`` correspond to the name of the layer defined in Rhino. The structure object named "mdl" is used inside the function ``area_load_generator_elements`` to extract the element numbers.
+
+The loaded elements (correspond to the elements which centroieds whichUsing the
 
 ## Add the loaded element to the **Structure** object 
 Coming soo
