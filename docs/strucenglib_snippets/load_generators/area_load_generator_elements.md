@@ -40,7 +40,7 @@ For the definition of the local axes see [here](https://github.com/kfmResearch-N
 are saved in a Rhino layer, where it can be easly plotted on the  can be 
 
 ## Example 
-A working example is found under TBD.
+A working example is found under TBD. A Video will follow soon.
 
 ## Source Code
 The function ``area_load_generator_elements`` is hosted on XX
