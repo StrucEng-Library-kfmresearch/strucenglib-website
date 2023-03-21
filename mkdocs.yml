@@ -98,10 +98,6 @@ nav:
           Source Code: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin
   - 'StrucEng Library Snippets':
       - Prepost Functions: 
-          - Load generators:
-              - Area load generator: strucenglib_snippets/Sandwichmodel.md      
-              - Load generator for Railroads:
-      - Sandwichmodel: 
-          - Mechanical Model:          
+          - Area load generator: strucenglib_snippets/Sandwichmodel.md            
 
   - About: about.md
