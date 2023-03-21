@@ -1,5 +1,5 @@
 
-This page shows the workflow how to use the function ``area_load_generator_elements``. 
+This page shows the functionality of the function ``area_load_generator_elements``. 
 
 The load area can be defined using a polyline in Rhino. The polyline is to be stored in a separate layer (here with the name area_load).
 
