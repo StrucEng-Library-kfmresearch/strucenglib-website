@@ -1,6 +1,18 @@
 
 This page shows how loads can be defined using the function area_load_generator_elements and add the loads to the **Structure** object. 
 
+## Define the loaded area in Rhino
+Coming soon
+
+## Determine the numbers of the loaded elements
+Coming soon
+
+## Add the loaded element to the **Structure** object 
+Coming soo
+
+## Add the areas load to the steps
+Coming soon
+
 ----OLD
 The StrucEng Library features a server component to run FEA solvers on a remote host.
 This simplifies configuration setup and increases execution speed as FEA computations are remotely executed.
