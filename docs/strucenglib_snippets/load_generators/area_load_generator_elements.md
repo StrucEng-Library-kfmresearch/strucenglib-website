@@ -1,12 +1,10 @@
 
 This page shows the workflow how to use the function ``area_load_generator_elements``. 
 
-## Define the loaded area in Rhino
 The load area can be defined using a polyline in Rhino. The polyline is to be stored in a separate layer (here with the name area_load).
 
 ![BSP_area_load_generator](https://user-images.githubusercontent.com/49633262/226637930-a71a9aa0-46d4-4235-89be-0b1a2d3f2793.png)
 
-## Determine the numbers of the loaded elements
 A list of loaded elements (corresponding to the elements whose geometric center lies within the polyline) are calculated using the function ``area_load_generator_elements`` where the string ``layer`` correspond to the name of the layer defined in Rhino. The structure object named "mdl" is used inside the function ``area_load_generator_elements`` to extract the element numbers.
 
 ```python
