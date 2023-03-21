@@ -1,8 +1,10 @@
 
-This page shows the workflow how to use the function area_load_generator_elements. 
+This page shows the workflow how to use the function ``area_load_generator_elements``. 
 
 ## Define the loaded area in Rhino
-Coming soon
+The load area can be defined using a polyline in Rhino. The polyline is to be stored in a separate layer (here with the name area_load).
+
+![BSP_area_load_generator](https://user-images.githubusercontent.com/49633262/226637930-a71a9aa0-46d4-4235-89be-0b1a2d3f2793.png)
 
 ## Determine the numbers of the loaded elements
 Coming soon
