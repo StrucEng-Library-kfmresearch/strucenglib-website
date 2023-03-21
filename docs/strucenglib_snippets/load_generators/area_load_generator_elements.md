@@ -1,7 +1,7 @@
 
 This page shows the functionality of the function ``area_load_generator_elements``. 
 
-The load area can be defined using a polyline in Rhino. The polyline is to be stored in a separate layer (here with the name area_load).
+The load area is defined using polylines in Rhino. The polyline is to be stored in a separate layer (here with the name area_load).
 
 ![BSP_area_load_generator](https://user-images.githubusercontent.com/49633262/226637930-a71a9aa0-46d4-4235-89be-0b1a2d3f2793.png)
 
