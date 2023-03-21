@@ -9,7 +9,20 @@ The load area can be defined using a polyline in Rhino. The polyline is to be st
 ## Determine the numbers of the loaded elements
 A list of loaded elements (corresponding to the elements whose geometric center lies within the polyline) are calculated using the function ``area_load_generator_elements`` where the string ``layer`` correspond to the name of the layer defined in Rhino. The structure object named "mdl" is used inside the function ``area_load_generator_elements`` to extract the element numbers.
 
-The loaded elements (correspond to the elements which centroieds whichUsing the
+```python
+from compas_fea.structure import Structure
+from strucenglib.prepost_functions import area_load_generator_elements
+
+name = 'Example_area_load_generator_elements'
+path = 'C:\Temp\\'
+mdl = Structure(name=name, path=path)
+# ...
+
+# Calculate Element numbers within the polyline
+loaded_element_numbers=area_load_generator_elements(mdl,layer='area_load') # 
+
+# ...
+```
 
 ## Add the loaded element to the **Structure** object 
 Coming soo
