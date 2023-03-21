@@ -1,5 +1,5 @@
 
-This page shows how loads can be defined using the function area_load_generator_elements and add the loads to the **Structure** object. 
+This page shows the workflow how to use the function area_load_generator_elements. 
 
 ## Define the loaded area in Rhino
 Coming soon
