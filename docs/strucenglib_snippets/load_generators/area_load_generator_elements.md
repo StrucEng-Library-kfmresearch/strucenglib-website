@@ -8,7 +8,7 @@ The load area is defined using polylines in Rhino. The polyline is to be stored 
 
 A list of loaded elements ``loaded_element_numbers`` - corresponding to the elements whose geometric center lies within the polyline - are calculated using the function ``area_load_generator_elements`` where the string ``layer`` correspond to the name of the layer defined in Rhino. The structure object named "mdl" is used inside the function ``area_load_generator_elements`` to extract the element numbers.
 
-The list ``loaded_element_numbers`` can then use in the **AreaLoad"" object provied by the **compas_fea**. The  **AreaLoad"" object applies distributed loads per unit area (pressure x, y, z in units of N/mm2) on elements such as **ShellElement** objects. The ``elements`` to apply the load to is given by the list ``loaded_element_numbers`` and the ``name`` of the **AreaLoad** is required for its key. Only axis='local' is currently supported for Ansys, whereby x and y are local surface shears and z is the local normal pressure. Positive/negativ loads correspond to loads in the positive/negatziv direction of the local axes. Further a **Step" is added to the ``.steps`` dictioniary of the **Structure** object with the same string key ``name``.
+The list ``loaded_element_numbers`` can then use in the **AreaLoad"" object provied by the **compas_fea**. The  **AreaLoad"" object applies distributed loads per unit area (pressure x, y, z in units of N/mm2) on elements such as **ShellElement** objects. The ``elements`` to apply the load to is given by the list ``loaded_element_numbers`` and the ``name`` of the **AreaLoad** is required for its key. Only axis='local' is currently supported for Ansys, whereby x and y are local surface shears and z is the local normal pressure. Positive/negativ loads correspond to loads in the positive/negatziv direction of the local axes. Further a **Step** is added to the ``.steps`` dictioniary of the **Structure** object with the same string key ``name``.
 
 ```python
 from compas_fea.structure import Structure
@@ -35,7 +35,7 @@ mdl.steps_order = ['step_1', 'step_2']
 
 In a addition to the list ``loaded_element_numbers`` the loaded elements can be easily visualized via the Rhino layer, which is created during the execution of the function ``area_load_generator_elements``. 
 
-For the definition of the local axes see [here](https://github.com/kfmResearch-NumericsTeam/Struc_Eng_Library_Server). More information about the **AreaLoad"" and **Step** objects can be found on the official [compas_fea documentation](https://compas.dev/compas_fea/latest/tutorial.html) . 
+For the definition of the local axes see [here](https://github.com/kfmResearch-NumericsTeam/Struc_Eng_Library_Server). More information about the **AreaLoad** and **Step** objects can be found on the official [compas_fea documentation](https://compas.dev/compas_fea/latest/tutorial.html) . 
 
 are saved in a Rhino layer, where it can be easly plotted on the  can be 
 
