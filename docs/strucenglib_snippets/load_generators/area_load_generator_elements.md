@@ -1,5 +1,7 @@
 
+This page shows how loads can be defined using the function area_load_generator_elements and add the loads to the **Structure** object. 
 
+----OLD
 The StrucEng Library features a server component to run FEA solvers on a remote host.
 This simplifies configuration setup and increases execution speed as FEA computations are remotely executed.
 
