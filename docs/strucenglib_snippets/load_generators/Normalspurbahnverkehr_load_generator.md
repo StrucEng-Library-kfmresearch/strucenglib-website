@@ -34,7 +34,19 @@ The following inputs are required:
 | Parameter    | data type      | Description           |
 | :---         | :---           | :---                  |
 | ``mdl``      | object         | **Structure** Object (see [Link](https://compas.dev/compas_fea/latest/tutorial.html) for more information)  |
+| ``name``     | string         | Name of the load |
 | ``l_Pl``     | integer        | Length of the plate measured between plane of the supporting walls |
+| ``h_Pl``     | integer        | high of the plate, haunches are not considered and a homogeneous plate thickness is assumed  |
+| ``s``        | integer        | Distance bewtween global origin and start point of the track at y=0 |
+| ``beta``     | integer        | Inclination of the track to the y-axis (positive clockwise, negative counterclockwise) |
+| ``q_Gl``     | integer        | Dead weight of concrete sleeper and rail in N/mm |
+| ``b_Bs``     | integer        | Width of the concrete sleeper |
+| ``h_Strich`` | integer        | Gravel height between lower edge of railway sleeper and concrete slab |
+| ``Q_k``      | integer        | Point load from train load model |
+| ``y_A``      | integer        | Distance in y-direction between point load 1 and the origin |
+
+
+
 
 
 ### Output
