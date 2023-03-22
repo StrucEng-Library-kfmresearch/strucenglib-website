@@ -25,7 +25,8 @@ return_values_Gleis_1=Normalspurbahnverkehr_load_generator(mdl,name='Gleis_1', l
 
 # ...
 ```
-Figure with parameters coming soong
+
+![BSP_area_load_generator](https://user-images.githubusercontent.com/49633262/226637930-a71a9aa0-46d4-4235-89be-0b1a2d3f2793.png)
 
 ### Inputs
 
