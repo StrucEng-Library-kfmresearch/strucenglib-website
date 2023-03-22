@@ -15,10 +15,19 @@ The current version of the ``Normalspurverkehr_load_generator`` has been develop
 
 ## Functionality
 
+The railways loads are defined using numerical inputs. Currentley no grafical input via the Rhino user Interface is suppoerted. 
 
-The railways loads are defined usingnumerical inputs in the function ``Normalspurverkehr_load_generator``. Currentley no grafical input via the Rhino user Interface is suppoerted. 
+```python
 
+# ...
+
+# Normalspurverkehr Load generator
 return_values_Gleis_1=Normalspurbahnverkehr_load_generator(mdl,name='Gleis_1', l_Pl=10000, h_Pl=200, s=7500, beta=-30, q_Gl=-4.8*10000, b_Bs=1000, h_Strich=200, Q_k=-225*1000, y_A=5000)
+# ...
+
+```
+
+
 
 ### Input
 
