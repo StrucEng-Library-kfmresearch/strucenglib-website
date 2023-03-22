@@ -100,7 +100,7 @@ nav:
       - Home: strucenglib_snippets/home.md
       - Load Generators: 
           - Area Load Generator: strucenglib_snippets/load_generators/area_load_generator_elements.md      
-          - Load Generator for Railway Loads: strucenglib_snippets/load_generators/Normalspurbahnverkehr_load_generator.md
+          - Generator for Railway Loads: strucenglib_snippets/load_generators/Normalspurbahnverkehr_load_generator.md
       - Mechanical Models:
           - Sandwichmodel: strucenglib_snippets/Models/Sandwichmodel.md
       - Developer Notes:
