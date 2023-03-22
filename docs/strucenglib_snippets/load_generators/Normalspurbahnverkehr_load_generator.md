@@ -30,6 +30,10 @@ return_values_Gleis_1=Normalspurbahnverkehr_load_generator(mdl,name='Gleis_1', l
 
 The following inputs are required:
 
+| First Header  | Second Header | Content Cell  |
+| ------------- | ------------- | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  |
 
 | mdl  | object | Correspond to the **Structure** Object |
 | mdl  | object | Correspond to the **Structure** Object |
