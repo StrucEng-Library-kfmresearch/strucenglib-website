@@ -57,7 +57,7 @@ The following inputs are required:
 | ``y_A``      | integer        | Distance in y-direction between point load 1 and the origin |
 
 ## Output
-The output (here names as return_values_Gleis_1) contains all layer names (strings) of the generated loads. The output can be assigned to the steps. The **AreaLoad* is generated automatically within the function ``Normalspurverkehr_load_generator``.
+The output (here names as return_values_Gleis_1) contains all layer names (strings) of the generated loads. The output can be assigned to the steps. The **AreaLoad* is generated automatically within the function ``Normalspurverkehr_load_generator``. In addition, the load application areas of the rails own weights and the centers of the loaded elements as well as the position of the rail loads, the corresponding load application areas and element centers are specified in separate Rhino layers.
 
 
 ## Example 
