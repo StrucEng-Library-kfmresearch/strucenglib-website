@@ -32,13 +32,7 @@ The following inputs are required:
 
 
 | mdl  | object | Correspond to the **Structure** Object (see [Link](https://compas.dev/compas_fea/latest/tutorial.html) for more information |
-| name | string  | Name of the load |
-| Content Cell  | Content Cell  |
-
-| First Headeadsfasdfr  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| mdl  | object | Correspond to the **Structure** Object (see [Link](https://compas.dev/compas_fea/latest/tutorial.html) for more information |
 
 ### Output
 
