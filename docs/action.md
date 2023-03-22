@@ -1,4 +1,4 @@
-# See the StrucEnb Library in Action
+# See the StrucEng Library in Action
 
 
 ## Video Tour
