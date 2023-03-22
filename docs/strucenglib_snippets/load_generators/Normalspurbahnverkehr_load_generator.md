@@ -18,34 +18,28 @@ The current version of the ``Normalspurverkehr_load_generator`` has been develop
 The railways loads are defined using numerical inputs. Currentley no grafical input via the Rhino user Interface is suppoerted. 
 
 ```python
-
 # ...
 
 # Normalspurverkehr Load generator
 return_values_Gleis_1=Normalspurbahnverkehr_load_generator(mdl,name='Gleis_1', l_Pl=10000, h_Pl=200, s=7500, beta=-30, q_Gl=-4.8*10000, b_Bs=1000, h_Strich=200, Q_k=-225*1000, y_A=5000)
-# ...
 
+# ...
 ```
 
+### Inputs
+
+The following inputs are required:
 
 
-### Input
-
-
-
-| mdl  | Second Header |
-| ------------- | ------------- |
+| mdl  | object | Correspond to the **Structure** Object (see [Link](https://compas.dev/compas_fea/latest/tutorial.html) for more information |
+| name | string  | Name of the load |
 | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-
-
 
 
 
 ### Output
 
 
-### Related links
 
 
 
