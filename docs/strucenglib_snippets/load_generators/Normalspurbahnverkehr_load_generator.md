@@ -13,6 +13,8 @@ The current version of the ``Normalspurverkehr_load_generator`` has been develop
 - The x-direction is always parallel to the edge of the plate
 - Walls (constraints) are always parallel to the x and y axis, respectively. 
 
+![Normalspurverkehr](https://user-images.githubusercontent.com/49633262/226929341-d75c1cce-59fa-4b7d-b906-d31a7b4a533c.png)
+
 ## Functionality
 
 The railways loads are defined using numerical inputs. Currentley no grafical input via the Rhino user Interface is suppoerted. 
@@ -43,8 +45,6 @@ The following inputs are required:
 | ``h_Strich`` | integer        | Gravel height between lower edge of railway sleeper and concrete slab |
 | ``Q_k``      | integer        | Point load from train load model |
 | ``y_A``      | integer        | Distance in y-direction between point load 1 and the origin |
-
-![Normalspurverkehr](https://user-images.githubusercontent.com/49633262/226929341-d75c1cce-59fa-4b7d-b906-d31a7b4a533c.png)
 
 ### Output
 Coming Soon
