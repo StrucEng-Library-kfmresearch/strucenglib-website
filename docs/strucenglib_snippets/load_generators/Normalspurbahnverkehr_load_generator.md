@@ -25,6 +25,7 @@ return_values_Gleis_1=Normalspurbahnverkehr_load_generator(mdl,name='Gleis_1', l
 
 # ...
 ```
+Figure with parameters coming soong
 
 ### Inputs
 
@@ -32,8 +33,8 @@ The following inputs are required:
 
 | Parameter    | data type      | Description           |
 | :---         | :---           | :---                  |
-| mdl          | object         | **Structure** Object (see [Link](https://compas.dev/compas_fea/latest/tutorial.html) for more information)  |
-| mdl          | object         | **Structure** Object  |
+| ``mdl``      | object         | **Structure** Object (see [Link](https://compas.dev/compas_fea/latest/tutorial.html) for more information)  |
+| ``l_Pl``     | integer        | Length of the plate measured between plane of the supporting walls |
 
 
 ### Output
