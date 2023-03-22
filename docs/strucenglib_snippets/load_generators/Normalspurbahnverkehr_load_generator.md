@@ -31,8 +31,8 @@ return_values_Gleis_1=Normalspurbahnverkehr_load_generator(mdl,name='Gleis_1', l
 The following inputs are required:
 
 
-| mdl  | object | Correspond to the **Structure** Object (see [Link](https://compas.dev/compas_fea/latest/tutorial.html) for more information |
-| mdl  | object | Correspond to the **Structure** Object (see [Link](https://compas.dev/compas_fea/latest/tutorial.html) for more information |
+| mdl  | object | Correspond to the **Structure** Object |
+| mdl  | object | Correspond to the **Structure** Object |
 
 ### Output
 
