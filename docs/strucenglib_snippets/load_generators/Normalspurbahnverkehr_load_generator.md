@@ -26,6 +26,16 @@ The railways loads are defined using numerical inputs. Currentley no grafical in
 return_values_Gleis_1=Normalspurbahnverkehr_load_generator(mdl,name='Gleis_1', l_Pl=10000, h_Pl=200, s=7500, beta=-30, q_Gl=-4.8*10000, b_Bs=1000, h_Strich=200, Q_k=-225*1000, y_A=5000)
 
 # ...
+
+# Steps
+mdl.add([
+    GeneralStep(name='step_1', displacements=['disp_left', 'disp_right'],nlgeom=False),
+    GeneralStep(name='step_2', loads=return_values_Gleis_1, increments=1, nlgeom=False),
+])
+mdl.steps_order = ['step_1', 'step_2']
+
+# ...
+
 ```
 
 ## Inputs
@@ -47,7 +57,8 @@ The following inputs are required:
 | ``y_A``      | integer        | Distance in y-direction between point load 1 and the origin |
 
 ## Output
-Coming Soon
+The output (here names as return_values_Gleis_1) contains all layer names (strings) of the generated loads. The output can be assigned to the steps. The **AreaLoad* is generated automatically within the function ``Normalspurverkehr_load_generator``.
+
 
 ## Example 
 An example of how the function ``Normalspurverkehr_load_generator`` can be used in a structural analysis is found on this [link](https://github.com/StrucEng-Library-kfmresearch/strucenglib-snippets/tree/ansys/examples/Normalspurverkehr_load_generator)-
