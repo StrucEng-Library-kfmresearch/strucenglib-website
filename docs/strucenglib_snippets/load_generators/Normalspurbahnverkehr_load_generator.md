@@ -30,8 +30,8 @@ return_values_Gleis_1=Normalspurbahnverkehr_load_generator(mdl,name='Gleis_1', l
 
 The following inputs are required:
 
-| mdl           | object | **Structure** Object |
 | :---         |     :---:      |          ---: |
+| mdl           | object | **Structure** Object |
 | git status   | git status     | git status    |
 | git diff     | git diff       | git diff      |
 
