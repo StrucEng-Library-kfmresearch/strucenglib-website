@@ -28,7 +28,7 @@ return_values_Gleis_1=Normalspurbahnverkehr_load_generator(mdl,name='Gleis_1', l
 # ...
 ```
 
-### Inputs
+## Inputs
 
 The following inputs are required:
 
@@ -46,7 +46,7 @@ The following inputs are required:
 | ``Q_k``      | integer        | Point load from train load model |
 | ``y_A``      | integer        | Distance in y-direction between point load 1 and the origin |
 
-### Output
+## Output
 Coming Soon
 
 ## Example 
