@@ -39,4 +39,4 @@ mdl.steps_order = ['step_1', 'step_2']
 An example of how the function ``area_load_generator_elements``can be used in a strucutral analysis is found on this [link]([https://compas.dev/compas_fea/latest/tutorial.html](https://github.com/StrucEng-Library-kfmresearch/strucenglib-snippets/tree/ansys/examples/Area_load_generator_elements). 
 
 ## Source Code
-The function ``area_load_generator_elements`` is hosted on [github](https://github.com/StrucEng-Library-kfmresearch/strucenglib-snippets/blob/ansys/strucenglib/prepost_functions/area_load_generator_elements.py).
+The function ``area_load_generator_elements`` is hosted and described in detail on [github](https://github.com/StrucEng-Library-kfmresearch/strucenglib-snippets/blob/ansys/strucenglib/prepost_functions/area_load_generator_elements.py).
