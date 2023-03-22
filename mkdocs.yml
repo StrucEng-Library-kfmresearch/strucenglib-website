@@ -102,4 +102,6 @@ nav:
           - Load generator for railway loads: strucenglib_snippets/load_generators/Normalspurbahnverkehr_load_generator.md
       - Mechanical models:
           - Sandwichmodel: strucenglib_snippets/Models/Sandwichmodel.md
+  - 'Compas FEA':
+      - General: 
   - About: about.md
