@@ -106,6 +106,7 @@ nav:
       - Developer Notes:
           - Code Documentation: strucenglib_snippets/developer_notes/documentation
   - 'Compas FEA':
+      - Home: compas_fea/home.md
       - General: compas_fea/general.md
       - Adjustments: compas_fea/adjustments.md
   - About: about.md
