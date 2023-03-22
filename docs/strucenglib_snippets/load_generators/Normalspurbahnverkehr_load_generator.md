@@ -32,7 +32,6 @@ The following inputs are required:
 
 
 | mdl           | object | **Structure** Object |
-| :---         |     :---:      |          ---: |
 | git status   | git status     | git status    |
 | git diff     | git diff       | git diff      |
 
