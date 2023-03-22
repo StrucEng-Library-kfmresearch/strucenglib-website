@@ -103,5 +103,6 @@ nav:
       - Mechanical models:
           - Sandwichmodel: strucenglib_snippets/Models/Sandwichmodel.md
   - 'Compas FEA':
-      - General: 
+      - General: compas_fea/general.md
+      - Adjustments: compas_fea/adjustments.md
   - About: about.md
