@@ -98,6 +98,7 @@ nav:
           Source Code: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin
   - 'StrucEng Library Snippets':
       - Prepost Functions: 
-          - Area load generator: strucenglib_snippets/load_generators/area_load_generator_elements.md          
+          - Area load generator: strucenglib_snippets/load_generators/area_load_generator_elements.md      
+          - Load generator for railway loads: strucenglib_snippets/load_generators/Normalspurbahnverkehr_load_generator.md
 
   - About: about.md
