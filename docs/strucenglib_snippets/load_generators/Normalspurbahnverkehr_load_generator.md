@@ -1,6 +1,18 @@
 
 This page shows the functionality of the function ``Normalspurverkehr_load_generator``. 
 
+## Assumption and Restrictions
+The current version of the ``Normalspurverkehr_load_generator`` has been developed for classic overpasses (frames/plate structures). The following restrictions apply:
+
+- The Global origin must always be at x=0, y=0 and z=0.
+- The Global origin must lie on the same plane as the plate.
+- The Global origin is always on the lower left corner of the plate.
+- Therefore the pate must extend in the positive x and y axis and lie completley in the xy plane.
+- Loads are always defined in the direction of the local (negativ) z-direction.
+- The local z-direction always points in the positive global z-axis
+- The x-direction is always parallel to the edge of the plate
+- Walls (constraints) are always parallel to the x and y axis, respectively. 
+
 ## Basic functionality
 The load area is defined using polylines in Rhino. The polyline is to be stored in a separate layer (here with the name area_load).
 
@@ -36,7 +48,7 @@ mdl.steps_order = ['step_1', 'step_2']
 ```
 
 ## Example 
-An example of how the function ``area_load_generator_elements``can be used in a strucutral analysis is found on this [link](https://compas.dev/compas_fea/latest/tutorial.html](https://github.com/StrucEng-Library-kfmresearch/strucenglib-snippets/tree/ansys/examples/Area_load_generator_elements). 
+An example of how the function ``Normalspurverkehr_load_generator`` can be used in a strucutral analysis is found on this [link](https://github.com/StrucEng-Library-kfmresearch/strucenglib-snippets/tree/ansys/examples/Normalspurverkehr_load_generator)-
 
 ## Source Code
 The function ``area_load_generator_elements`` is hosted and described in detail on [github](https://github.com/StrucEng-Library-kfmresearch/strucenglib-snippets/blob/ansys/strucenglib/prepost_functions/area_load_generator_elements.py).
