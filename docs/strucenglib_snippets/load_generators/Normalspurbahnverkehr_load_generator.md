@@ -13,8 +13,18 @@ The current version of the ``Normalspurverkehr_load_generator`` has been develop
 - The x-direction is always parallel to the edge of the plate
 - Walls (constraints) are always parallel to the x and y axis, respectively. 
 
-## Basic functionality
-The load area is defined using polylines in Rhino. The polyline is to be stored in a separate layer (here with the name area_load).
+## Functionality
+
+### Input
+
+The railways loads are defined using numerical inputs in the function ``Normalspurverkehr_load_generator``. Currentley no grafical input via the Rhino user Interface is suppoerted. The 
+
+
+
+
+
+output
+
 
 ![BSP_area_load_generator](https://user-images.githubusercontent.com/49633262/226637930-a71a9aa0-46d4-4235-89be-0b1a2d3f2793.png)
 
