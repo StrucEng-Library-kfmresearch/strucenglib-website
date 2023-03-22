@@ -26,8 +26,6 @@ return_values_Gleis_1=Normalspurbahnverkehr_load_generator(mdl,name='Gleis_1', l
 # ...
 ```
 
-![BSP_area_load_generator](https://user-images.githubusercontent.com/49633262/226637930-a71a9aa0-46d4-4235-89be-0b1a2d3f2793.png)
-
 ### Inputs
 
 The following inputs are required:
@@ -46,9 +44,7 @@ The following inputs are required:
 | ``Q_k``      | integer        | Point load from train load model |
 | ``y_A``      | integer        | Distance in y-direction between point load 1 and the origin |
 
-
-
-
+![Normalspurverkehr](https://user-images.githubusercontent.com/49633262/226929341-d75c1cce-59fa-4b7d-b906-d31a7b4a533c.png)
 
 ### Output
 
