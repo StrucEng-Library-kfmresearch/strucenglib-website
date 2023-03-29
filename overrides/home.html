@@ -6,7 +6,16 @@
 
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
       rel="stylesheet"/>
- <link rel="stylesheet" href="assets/website/home.css">
+
+<script src="
+             https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
+             "></script>
+<link href="
+            https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
+            " rel="stylesheet">
+
+<link rel="stylesheet" href="assets/website/home.css">
+
 
 <section class="wrapper hero-section">
     <div class="container">
@@ -29,8 +38,29 @@
             </div>
             <div class="grid-item-2">
                 <div class="team_img_wrapper">
-                    <img alt="team-img"
-                         src="https://via.placeholder.com/555"/>
+                    <div class="splide" role="group" aria-label="StrucEng Library Image Preview">
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                <li class="splide__slide">
+                                    <div class="splide__slide__container">
+                                        <img src="/strucenglib_plugin/assets/demo.png">
+                                    </div>
+                                </li>
+                                <li class="splide__slide">
+                                    <div class="splide__slide__container">
+                                        <img src="https://user-images.githubusercontent.com/49633262/226637930-a71a9aa0-46d4-4235-89be-0b1a2d3f2793.png">
+                                    </div>
+                                </li>
+                                <li class="splide__slide">
+                                    <div class="splide__slide__container">
+                                        <img src="https://user-images.githubusercontent.com/2311941/196966672-f58dc806-5e87-4a6e-9144-0209046d86c2.png">
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- <img alt="team-img"
+                         src="https://via.placeholder.com/555"/> -->
                 </div>
             </div>
         </div>
@@ -43,14 +73,18 @@
         <div class="grid-cols-3 components-feat">
             <div class="grid-col-item components-feat-box">
                 <div class="icon">
-                    <img class='components-feat-img'
-                         src='https://via.placeholder.com/200'/>
+                    <img src="/assets/draw3.svg" class="icon-img">
+                    <!-- <img src="/assets/extension.svg" class="icon-img"> -->
+                    <!-- <img class='components-feat-img'
+                         src='https://via.placeholder.com/200'/> -->
                 </div>
                 <div class="featured_info components-feat-box-text">
-                    <span>Rhinoceros 3D Plugin</span>
-                    <p>
-                        The StrucEng Library Plugin integrates FE models into Rinoceros 3D using Abaqus as backend.
-                    </p>
+                    <div>
+                        <span>Rhinoceros 3D Plugin</span>
+                        <p>
+                            The StrucEng Library Plugin integrates FE models into Rinoceros 3D using Abaqus as backend.
+                        </p>
+                    </div>
                     <div class="components-but components-but--view-more">
                         <p><a href='/strucenglib_plugin/home/'>Learn More<i class="ri-arrow-right-line"></i></a></p>
                     </div>
@@ -58,14 +92,17 @@
             </div>
             <div class="grid-col-item components-feat-box">
                 <div class="icon">
-                    <img class='components-feat-img'
-                         src='https://via.placeholder.com/200'/>
+                    <img src="/assets/snippet.svg" class="icon-img">
+                    <!-- <img class='components-feat-img' -->
+                    <!-- src='https://via.placeholder.com/200'/> -->
                 </div>
                 <div class="featured_info components-feat-box-text">
-                    <span>StrucEng Library Snippets</span>
-                    <p>
-                        StrucEng Library Snippets for the backend Ansys.
-                    </p>
+                    <div>
+                        <span>StrucEng Library Snippets</span>
+                        <p>
+                            StrucEng Library Snippets for the backend Ansys.
+                        </p>
+                    </div>
                     <div class="components-but components-but--view-more">
                         <p><a href='/strucenglib_snippets/home/'>Learn More<i class="ri-arrow-right-line"></i></a></p>
                     </div>
@@ -73,14 +110,17 @@
             </div>
             <div class="grid-col-item components-feat-box">
                 <div class="icon">
-                    <img class='components-feat-img'
-                         src='https://via.placeholder.com/200'/>
+                    <img src="/assets/code.svg" class="icon-img">
+                    <!-- <img class='components-feat-img' -->
+                    <!-- src='https://via.placeholder.com/200'/> -->
                 </div>
                 <div class="featured_info components-feat-box-text">
-                    <span>StrucEng Library Patches for Compas FEA</span>
-                    <p>
-                        StrucEng Library Patches for Compas FEA
-                    </p>
+                    <div>
+                        <span>Patches for Compas FEA</span>
+                        <p>
+                            StrucEng Library Patches for Compas FEA
+                        </p>
+                    </div>
                     <div class="components-but components-but--view-more">
                         <p><a href='/compas_fea/home/'>Learn More<i class="ri-arrow-right-line"></i></a></p>
                     </div>
@@ -88,6 +128,14 @@
             </div>
         </div>
 </section>
+<script>
+ new Splide( '.splide', {
+     type       : 'loop',
+     trimSpace  : true,
+     fixedHeight: '20rem',
+ } ).mount();
+
+</script>
 {% endblock %}
 {% block content %}
 {% endblock %}

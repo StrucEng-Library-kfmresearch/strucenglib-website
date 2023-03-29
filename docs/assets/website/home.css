@@ -228,8 +228,16 @@ nav .md-footer__inner {
     background: #fff;
     box-shadow: rgb(0 0 0 / 1%) 0 1px 0, rgb(0 0 0 / 3%) 0 0 8px, rgb(0 0 0 / 8%) 0 20px 30px;
 }
+
+.components-feat-box:hover {
+        box-shadow: rgb(0 0 0 / 5%) 0 1px 0, rgb(0 0 0 / 10%) 0 0 8px, rgb(0 0 0 / 15%) 0 20px 30px;
+}
 .components-feat-box-text {
-    text-align: left;
+  min-height: 7rem;
+  text-align: left;
+  justify-content: space-between;
+  flex-direction: column;
+  display: flex;
 }
 .components-feat-img {
     border-radius: 50%;
@@ -237,15 +245,23 @@ nav .md-footer__inner {
 .learn-more {
 }
 .components-but {
-    display: block;
-    color: black;
+  display: block;
+  justify-content: flex-end;
+  display: flex;
+
+}
+.components-but a:hover {
+    color: var(--primary-color);
+    font-weight: bold;
 }
 .components-but:hover {
+
 }
 .components-but--view-more {
+
 }
 .components-but--view-more i {
-    margin-left: 0.4rem;
+
 }
 .in-action {
     background-color: var(--header-color);
@@ -372,10 +388,34 @@ nav .md-footer__inner {
         justify-content: center;
     }
     .team_img_wrapper {
-        width: 350px;
+        width: 500px;
         height: 350px;
+        margin: 0 auto;
     }
     .featured_info span {
         font-size: 19px;
     }
+}
+
+.icon-img {
+    width: 50%;
+}
+
+.splide__arrow {
+    background-color: var(--primary-color);
+
+}
+.splide__arrow svg {
+    fill: white;
+}
+.splide__pagination__page.is-active {
+    background: var(--primary-color);
+}
+
+.splide_slide {
+    display: flex;
+  justify-content: center;
+  /* align-self: center;    <---- REMOVE */
+  align-items: center;   /* <---- NEW    */
+  background: silver;
 }

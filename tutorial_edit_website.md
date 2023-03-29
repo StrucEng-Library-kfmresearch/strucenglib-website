@@ -46,7 +46,7 @@ Install python 3 and pip.
 # 1. create new virtual environment (optional)
 
 # 2. install dependencies
-pip install -r ./github/requirements.txt
+pip install -r ./.github/requirements.txt
 
 # 3. serve content
 mkdocs serve
