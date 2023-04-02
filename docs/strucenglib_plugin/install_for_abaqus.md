@@ -33,10 +33,10 @@ If plugin load fails with an error, ensure that the plugin is loaded in `PluginM
 ![image](https://user-images.githubusercontent.com/2311941/206239991-0800a332-0b85-4005-a3de-16ababcd698f.png)
 
 ## Post Installation
-Upon installation of the plugin, various python dependencies must be downloaded.
+Upon installation of the plugin, various Python dependencies must be downloaded.
 
 
-### Download code snippets
+### Download Dependencies
 
 Type `StrucEngLibInstallDependencies` in Rhino command line to open the dialog shown below.
 
