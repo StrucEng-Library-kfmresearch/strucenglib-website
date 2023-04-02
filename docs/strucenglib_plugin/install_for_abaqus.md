@@ -28,7 +28,7 @@ Rhino.
 ## Menu bar and Command integration
 Upon restart, the plugin integrates into Rhino menu bar and is accessible under `Tools` - `StrucEngLib Plugin` as well as in the command line with `StrucEngLib*`.
 
-If plugin load fails with an error, ensure that the plugin is loaded `PluginManager` settings:  
+If plugin load fails with an error, ensure that the plugin is loaded in `PluginManager` settings:  
 
 ![image](https://user-images.githubusercontent.com/2311941/206239991-0800a332-0b85-4005-a3de-16ababcd698f.png)
 
