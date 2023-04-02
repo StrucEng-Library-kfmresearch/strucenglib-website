@@ -83,12 +83,12 @@ markdown_extensions:
 nav:
   - Home: index.md
   - 'See in Action': action.md
-  - 'Rhino 3D Plugin':
+  - 'Rhinoceros 3D Plugin':
       - Home: strucenglib_plugin/home.md
-      - Screenshots: strucenglib_plugin/screenshots.md
       - Installation:
-          - Prerequisites: strucenglib_plugin/getting_started.md
-          - Installation: strucenglib_plugin/installation.md
+          - Prerequisites: strucenglib_plugin/prerequisites.md
+          - Install for Abaqus: strucenglib_plugin/install_for_abaqus.md
+          - Install for Ansys: strucenglib_plugin/install_for_ansys.md
       - Usage Guide:
           - 'StrucEngLib Server': strucenglib_plugin/server.md
           - 'Troubleshooting':   strucenglib_plugin/usage/troubleshooting.md

@@ -3,7 +3,7 @@
 The StrucEng Library features a server component to run FEA solvers on a remote host.
 This simplifies configuration setup and increases execution speed as FEA computations are remotely executed.
 
-## Running StrucEngLib Server
+## Run the Server
 A server instance is deployed on ibkpika host. When connected to ETH network, browse [http://ibkpika.ethz.ch:8080/](http://ibkpika.ethz.ch:8080/) to access the server log.
 
 [
@@ -11,10 +11,10 @@ A server instance is deployed on ibkpika host. When connected to ETH network, br
 
 The server log shows remote computation status logs. You may access the log during remote computations to keep track of computation results.
 
-## Connecting with StrucEngLibrary Plugin
+## Connect to Server
 In Rhino 3D, ensure to have latest strucenglib plugin version installed. Ensure to re-run `StrucEnglibInstallDependencies` command in Rhino to update all Python dependencies.
 
-### Enable Remote Computations
+### Configuration
 Configure the remote server in _Settings Tab_. Set the remote server to endpoint `ws://ibkpika.ethz.ch:8080/api/compute`.
 
 ![image](https://user-images.githubusercontent.com/2311941/213937093-aed1cc52-7856-4e73-ae8a-637b4ea03b6a.png)
