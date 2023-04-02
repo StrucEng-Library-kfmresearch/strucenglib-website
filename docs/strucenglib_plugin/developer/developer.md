@@ -5,14 +5,14 @@
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/alerts/)
 [![Latest tagged version](https://img.shields.io/github/v/tag/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin.svg)](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/blob/master/CHANGELOG)
 
-The source code of the Rhino Plugin is available on [Github](https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in).
+The source code of the Rhino Plugin is available on [Github](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin).
 
 
 ## Build
-The build system is captured in a vagrant image. Please consider the notes in [/tools/vagrant](https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in/tree/master/tools/vagrant) in the source distribution for the setup of the vagrant container. There is a [Github Action](https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in/actions) which reuses the same vagrant setup scripts to build and test StrucEng Lib on each commit.
+The build system is captured in a vagrant image. Please consider the notes in [/tools/vagrant](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/tree/master/tools/vagrant) in the source distribution for the setup of the vagrant container. There is a [Github Action](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/actions) which reuses the same vagrant setup scripts to build and test StrucEng Lib on each commit.
 
 ## Release
-StrucEng Lib Release management is captured in [/tools/distrib/](https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in/tree/master/tools/distrib). Rhino uses a proprietary package manager, [yak.exe](https://developer.rhino3d.com/guides/yak/what-is-yak/#:~:text=Note,manage%20plug%2Dins%20and%20more), to create a packaged artifact and publish to Rhino store.
+StrucEng Lib Release management is captured in [/tools/distrib/](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/tree/master/tools/distrib). Rhino uses a proprietary package manager, [yak.exe](https://developer.rhino3d.com/guides/yak/what-is-yak/#:~:text=Note,manage%20plug%2Dins%20and%20more), to create a packaged artifact and publish to Rhino store.
 
 
 ## Github Workflows
@@ -45,4 +45,4 @@ To unify code, we align with the following key decisions:
 
 
 ## Updating Sandwich Model
-The dependency installer will download the latest state of SandwichModel located in branch [strucenglib_plugin](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/blob/strucenglib_plugin/Sandwichmodel/setup.py). Any changes committed to this branch will be used upon reinstallation of dependency with dependency installer.
+The dependency installer will download the latest state of SandwichModel located in branch [strucenglib_plugin](https://github.com/StrucEng-Library-kfmresearch/strucenglib-snippets/blob/strucenglib_plugin/setup.py). Any changes committed to this branch will be used upon reinstallation of dependency with dependency installer.
