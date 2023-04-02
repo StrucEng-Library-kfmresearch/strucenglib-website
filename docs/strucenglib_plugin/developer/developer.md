@@ -45,4 +45,4 @@ To unify code, we align with the following key decisions:
 
 
 ## Updating Sandwich Model
-The dependency installer will download the latest state of SandwichModel located in branch [strucenglib_plugin](https://github.com/StrucEng-Library-kfmresearch/strucenglib-snippets/blob/strucenglib_plugin/setup.py). Any changes committed to this branch will be used upon reinstallation of dependency with dependency installer.
+The dependency installer will download the latest state of SandwichModel located in branch [strucenglib_plugin](https://github.com/StrucEng-Library-kfmresearch/strucenglib-snippets). Any changes committed to this branch will be used upon reinstallation of dependency with dependency installer.
