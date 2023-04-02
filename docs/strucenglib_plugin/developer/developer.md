@@ -1,9 +1,9 @@
 # Developer Notes
 
-[![Continuous Integration](https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in/actions/workflows/distrib_sh_build.yml/badge.svg?branch=master)](https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in/actions/workflows/distrib_sh_build.yml)
-[![CodeQL](https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in/actions/workflows/codeql-analysis.yml)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in/alerts/)
-[![Latest tagged version](https://img.shields.io/github/v/tag/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in.svg)](https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in/blob/master/CHANGELOG)
+[![Continuous Integration](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/actions/workflows/distrib_sh_build.yml/badge.svg?branch=master)](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/actions/workflows/distrib_sh_build.yml)
+[![CodeQL](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/actions/workflows/codeql-analysis.yml)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/alerts/)
+[![Latest tagged version](https://img.shields.io/github/v/tag/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin.svg)](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/blob/master/CHANGELOG)
 
 The source code of the Rhino Plugin is available on [Github](https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in).
 
@@ -16,14 +16,14 @@ StrucEng Lib Release management is captured in [/tools/distrib/](https://github.
 
 
 ## Github Workflows
-#### [distrib.sh build (CI)](https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in/actions/workflows/distrib_sh_build.yml) [![distrib.sh build](https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in/actions/workflows/distrib_sh_build.yml/badge.svg)](https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in/actions/workflows/distrib_sh_build.yml)
+#### [distrib.sh build (CI)](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/actions/workflows/distrib_sh_build.yml) [![distrib.sh build](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/actions/workflows/distrib_sh_build.yml/badge.svg)](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/actions/workflows/distrib_sh_build.yml)
 
 Main Build workflow, uses vagrant build script to build the project in an ubuntu-box. This ensures continuous integration and checks that the build is reproducible.
 
-#### [dotnet build (CI)](https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in/actions/workflows/dotnet_build.yml) [![dotnet build](https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in/actions/workflows/dotnet_build.yml/badge.svg)](https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in/actions/workflows/dotnet_build.yml)
+#### [dotnet build (CI)](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/actions/workflows/dotnet_build.yml) [![dotnet build](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/actions/workflows/dotnet_build.yml/badge.svg)](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/actions/workflows/dotnet_build.yml)
 Builds the solution with dotnet and powershell. This is for testing to ensure a build outside of vagrant box.
 
-#### [Deploy (CD)](https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in/actions/workflows/deploy.yml) [![deploy](https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in/actions/workflows/deploy.yml/badge.svg)](https://github.com/kfmResearch-NumericsTeam/StrucEng_Library_Plug_in/actions/workflows/deploy.yml)
+#### [Deploy (CD)](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/actions/workflows/deploy.yml) [![deploy](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/actions/workflows/deploy.yml/badge.svg)](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/actions/workflows/deploy.yml)
 
 This action captures the process to deploy into Rhino store. It builds and tests the source tree with a new version and deploys the artifacts into Rhino store. This can be used if built tools are not installed on the local machine.
 
@@ -45,4 +45,4 @@ To unify code, we align with the following key decisions:
 
 
 ## Updating Sandwich Model
-The dependency installer will download the latest state of SandwichModel located in branch [strucenglib_plugin](https://github.com/kfmResearch-NumericsTeam/StrucEng_Library/blob/strucenglib_plugin/Sandwichmodel/setup.py). Any changes committed to this branch will be used upon reinstallation of dependency with dependency installer.
+The dependency installer will download the latest state of SandwichModel located in branch [strucenglib_plugin](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/blob/strucenglib_plugin/Sandwichmodel/setup.py). Any changes committed to this branch will be used upon reinstallation of dependency with dependency installer.
