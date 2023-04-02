@@ -11,9 +11,28 @@ The source code of the Rhino Plugin is available on [Github](https://github.com/
 ## Build
 The build system is captured in a vagrant image. Please consider the notes in [/tools/vagrant](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/tree/master/tools/vagrant) in the source distribution for the setup of the vagrant container. There is a [Github Action](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/actions) which reuses the same vagrant setup scripts to build and test StrucEng Lib on each commit.
 
+```
+$ git clone git@github.com:StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin.git && cd strucenglib-rhino3d-plugin
+$ vagrant up
+$ ./distrib_vagrant.sh help
++ vagrant ssh -c 'cd /vagrant/tools/distrib/; ./distrib.sh help'
+distrib.sh: ./distrib.sh {update_version|version|build|package|deploy_test|deploy|distrib|distrib_test}
+commands:
+  update_version <version>.....: updates version
+  version......................: list version
+  build........................: build dotnet solution
+  test.........................: build dotnet solution, run tests
+  package......................: builds solution, creates yak package format
+  deploy_test..................: deploys the yak package found to test store
+  deploy.......................: deploys the yak package found store
+  distrib......................: builds, packages, deploys package to store
+  distrib_test.................: builds, packages, deploys package to test store
+
+Connection to 127.0.0.1 closed.
+```
+
 ## Release
 StrucEng Lib Release management is captured in [/tools/distrib/](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/tree/master/tools/distrib). Rhino uses a proprietary package manager, [yak.exe](https://developer.rhino3d.com/guides/yak/what-is-yak/#:~:text=Note,manage%20plug%2Dins%20and%20more), to create a packaged artifact and publish to Rhino store.
-
 
 ## Github Workflows
 #### [distrib.sh build (CI)](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/actions/workflows/distrib_sh_build.yml) [![distrib.sh build](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/actions/workflows/distrib_sh_build.yml/badge.svg)](https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/actions/workflows/distrib_sh_build.yml)
