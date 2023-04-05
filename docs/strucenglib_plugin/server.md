@@ -3,8 +3,12 @@
 The StrucEng Library features a server component to run FEA solvers on a remote host.
 This simplifies configuration setup and increases execution speed as FEA computations are remotely executed.
 
-![strucenglib-server drawio](https://user-images.githubusercontent.com/2311941/230133311-77709c33-c738-43a8-a23f-d109b4e86b8e.png)
 
+
+<figure markdown>
+  ![strucenglib-server](https://user-images.githubusercontent.com/2311941/230133311-77709c33-c738-43a8-a23f-d109b4e86b8e.png) { width=400}
+  <figcaption>Architecture StrucEngLib Server</figcaption>
+</figure>
 
 ## Run the Server
 A server instance is deployed on ibkpika host. When connected to ETH network, browse [http://ibkpika.ethz.ch:8080/](http://ibkpika.ethz.ch:8080/) to access the server log.
