@@ -6,7 +6,7 @@ This simplifies configuration setup and increases execution speed as FEA computa
 
 
 <figure markdown>
-  ![strucenglib-server drawio2](https://user-images.githubusercontent.com/2311941/230134303-61983d75-a9a8-4576-9d09-5c653a7086b6.png) { }
+  ![strucenglib-server drawio2](https://user-images.githubusercontent.com/2311941/230134303-61983d75-a9a8-4576-9d09-5c653a7086b6.png)
   <figcaption>Architecture StrucEngLib Server</figcaption>
 </figure>
 
