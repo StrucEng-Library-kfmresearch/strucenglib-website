@@ -100,14 +100,14 @@ nav:
       - Home: strucenglib_snippets/home.md
       - Basics: strucenglib_snippets/basic_functionality.md
       - Load Generators:              
-          - Gravity Loads: strucenglib-website/docs/strucenglib_snippets/load_generators/Gravity_loads.md 
+          - Gravity Loads: strucenglib_snippets/load_generators/Gravity_loads.md 
           - Area Load Generator: strucenglib_snippets/load_generators/area_load_generator_elements.md      
           - Generator for Railway Loads: strucenglib_snippets/load_generators/Normalspurbahnverkehr_load_generator.md
       - Mechanical Models:
           - Sandwichmodel: strucenglib_snippets/Models/Sandwichmodel.md
       - Results:
-          - Linear-elastic: strucenglib-website/docs/strucenglib_snippets/Results/linear_elastic.md   
-          - Sandwichmodel: strucenglib-website/docs/strucenglib_snippets/Results/Sandwichmodel.md
+          - Linear-elastic: strucenglib_snippets/Results/linear_elastic.md   
+          - Sandwichmodel: strucenglib_snippets/Results/Sandwichmodel.md
       - Developer Notes:
           - Code Documentation: strucenglib_snippets/developer_notes/documentation.md
   - 'Compas FEA':
