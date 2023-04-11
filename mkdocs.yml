@@ -99,7 +99,8 @@ nav:
   - 'StrucEng Library Snippets':
       - Home: strucenglib_snippets/home.md
       - Basics: strucenglib_snippets/basic_functionality.md
-      - Load Generators: 
+      - Load Generators:              
+          - Gravity Loads: strucenglib-website/docs/strucenglib_snippets/load_generators/Gravity_loads.md 
           - Area Load Generator: strucenglib_snippets/load_generators/area_load_generator_elements.md      
           - Generator for Railway Loads: strucenglib_snippets/load_generators/Normalspurbahnverkehr_load_generator.md
       - Mechanical Models:
