@@ -100,10 +100,20 @@ nav:
       - Home: strucenglib_snippets/home.md
       - Basics: strucenglib_snippets/basic_functionality.md
       - Structure:
-      - Load Generators:              
+      - Elements:
+      - Sets:
+      - Materials:
+      - Sections:
+      - Properties:
+      - Constraints:
+      - Prepost plots:
+      - Loads:              
           - Gravity Loads: strucenglib_snippets/load_generators/Gravity_loads.md 
           - Area Load Generator: strucenglib_snippets/load_generators/area_load_generator_elements.md      
           - Generator for Railway Loads: strucenglib_snippets/load_generators/Normalspurbahnverkehr_load_generator.md
+      - Steps:  
+      - Analyses:
+        
       - Mechanical Models:
           - Sandwichmodel: strucenglib_snippets/Models/Sandwichmodel.md
       - Results:
@@ -115,4 +125,7 @@ nav:
       - Home: compas_fea/home.md
       - General: compas_fea/general.md
       - Adjustments: compas_fea/adjustments.md
+  - 'Compas':
+      - Home:     
+      
   - About: about.md
