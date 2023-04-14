@@ -98,7 +98,20 @@ nav:
           Source Code: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin
   - 'StrucEng Library Snippets':
       - Basics: strucenglib_snippets/basics.md
-      - Structure: strucenglib_snippets/structure.md      
+      - Structure: strucenglib_snippets/structure.md   
+      - Elements: strucenglib_snippets/elements.md
+      - Sets: strucenglib_snippets/sets.md
+      - Materials: strucenglib_snippets/materials.md
+      - Sections: strucenglib_snippets/sections.md
+      - Properties: strucenglib_snippets/properties.md
+      - Constraints: strucenglib_snippets/constraints.md
+      - Prepost plots: strucenglib_snippets/prepost_plots.md
+      - Loads:  strucenglib_snippets/loads.md             
+      - Steps:  strucenglib_snippets/steps.md             
+      - Analyses: strucenglib_snippets/analyses.md             
+      - Results: strucenglib_snippets/results.md             
+      - Examples: strucenglib_snippets/examples.md             
+      - Developer Notes: strucenglib_snippets/dev_notes.md             
   - 'Compas FEA':
       - Home: compas_fea/home.md
       - General: compas_fea/general.md
