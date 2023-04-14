@@ -99,6 +99,7 @@ nav:
   - 'StrucEng Library Snippets':
       - Home: strucenglib_snippets/home.md
       - Basics: strucenglib_snippets/basic_functionality.md
+      - Structure:
       - Load Generators:              
           - Gravity Loads: strucenglib_snippets/load_generators/Gravity_loads.md 
           - Area Load Generator: strucenglib_snippets/load_generators/area_load_generator_elements.md      
