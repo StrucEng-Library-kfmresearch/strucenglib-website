@@ -97,6 +97,7 @@ nav:
           Changelog: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/blob/master/CHANGELOG
           Source Code: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin
   - 'StrucEng Library Snippets':
+      - Home: strucenglib_snippets/home.md
       - Basics: 
           -  Workflow: strucenglib_snippets/basics/workflow.md        
           -  Importing moduls and classes: strucenglib_snippets/basics/imports.md
