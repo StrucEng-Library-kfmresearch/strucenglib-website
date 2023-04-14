@@ -97,15 +97,17 @@ nav:
           Changelog: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/blob/master/CHANGELOG
           Source Code: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin
   - 'StrucEng Library Snippets':
-      - Home: strucenglib_snippets/home.md
-      - Basics: strucenglib_snippets/basic_functionality.md        
-      - Mechanical Models:
-          - Sandwichmodel: strucenglib_snippets/Models/Sandwichmodel.md
-      - Results:
-          - Linear-elastic: strucenglib_snippets/Results/linear_elastic.md   
-          - Sandwichmodel: strucenglib_snippets/Results/Sandwichmodel.md
-      - Developer Notes:
-          - Code Documentation: strucenglib_snippets/developer_notes/documentation.md
+      - Basics: 
+          -  Workflow: strucenglib_snippets/basics/workflow.md        
+          -  Importing moduls and classes: strucenglib_snippets/basics/imports.md
+      - Structure: 
+          -  Structure object: strucenglib_snippets/Structure/object.md  
+          -  Summary: strucenglib_snippets/Structure/summary.md  
+          -  Load and save: strucenglib_snippets/Structure/load_and_save.md  
+      - Elements:
+          -  Beam elements: strucenglib_snippets/elements/beam.md  
+          -  Shell elements: strucenglib_snippets/ elements /shell.md  
+          -  MPC elements: strucenglib_snippets/Structure/mpc.md  
   - 'Compas FEA':
       - Home: compas_fea/home.md
       - General: compas_fea/general.md
