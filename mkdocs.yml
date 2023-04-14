@@ -96,20 +96,9 @@ nav:
           Documentation: strucenglib_plugin/developer/developer.md
           Changelog: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/blob/master/CHANGELOG
           Source Code: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin
-  - 'StrucEng Library Snippets':
-      - Home: strucenglib_snippets/home.md
-      - Basics: 
-          -  Workflow: strucenglib_snippets/basics/workflow.md        
-          -  Importing moduls and classes: strucenglib_snippets/basics/imports.md
-      - Structure: 
-          -  Structure object: strucenglib_snippets/Structure/object.md  
-          -  Summary: strucenglib_snippets/Structure/summary.md  
-          -  Load and save: strucenglib_snippets/Structure/load_and_save.md  
-      - Elements:
-          -  Basic functionalities: strucenglib_snippets/elements/basics.md 
-          -  Beam elements: strucenglib_snippets/elements/beam.md 
-          -  Shell elements: strucenglib_snippets/elements/shell.md
-          -  MPC elements: strucenglib_snippets/elements/mpc.md 
+  - 'StrucEng Library Snippets': strucenglib_snippets/home.md
+      - Basics: strucenglib_snippets/basics.md
+      - Structure: strucenglib_snippets/structure.md      
   - 'Compas FEA':
       - Home: compas_fea/home.md
       - General: compas_fea/general.md
