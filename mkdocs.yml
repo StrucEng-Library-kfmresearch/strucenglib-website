@@ -105,6 +105,7 @@ nav:
           -  Summary: strucenglib_snippets/Structure/summary.md  
           -  Load and save: strucenglib_snippets/Structure/load_and_save.md  
       - Elements:
+          -  Basic functionalities: strucenglib_snippets/elements /basics.md  
           -  Beam elements: strucenglib_snippets/elements/beam.md  
           -  Shell elements: strucenglib_snippets/ elements /shell.md  
           -  MPC elements: strucenglib_snippets/Structure/mpc.md  
