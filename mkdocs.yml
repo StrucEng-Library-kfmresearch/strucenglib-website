@@ -107,7 +107,29 @@ nav:
           - Imposed loads on buildings: strucenglib_snippets/actions/buildings.md     
           - Actions on structures exposed to fire: strucenglib_snippets/actions/fire.md   
           - General actions: strucenglib_snippets/actions/general.md   
-          - Traffic loads on bridges: strucenglib_snippets/actions/traffic_loads.md         
+          - Traffic loads on bridges: strucenglib_snippets/actions/traffic_loads.md  
+      - Concrete structures: 
+          - Material models: strucenglib_snippets/concrete_structures/material_models.md     
+          - Code checks: strucenglib_snippets/actions/concrete_structures/code_checks.md          
+      - Masonry structures: 
+          - Material models: strucenglib_snippets/masonry_structures/material_models.md     
+          - Code checks: strucenglib_snippets/actions/masonry_structures/code_checks.md      
+      - Grafical outputs:
+          - Prepost plots: strucenglib_snippets/grafical_outputs/prepost_plots.md    
+          - Numerical results: strucenglib_snippets/grafical_outputs/numerical_results.md            
   - 'Patches for Compas FEA':
       - Home: compas_fea/home.md 
+      - Basics: compas_fea/basics.md   
+      - Structure: compas_fea/structure.md   
+      - Elements: compas_fea/nodes.md
+      - Sets: compas_fea/elements.md
+      - Materials: compas_fea/sets.md
+      - Sections: compas_fea/sections.md
+      - Properties: compas_fea/materials.md
+      - Constraints: compas_fea/properties.md
+      - Loads:  compas_fea/loads.md             
+      - Steps:  compas_fea/displacements.md             
+      - Analyses: compas_fea/steps.md             
+      - Results: compas_fea/analysis.md                         
+      - Developer Notes: compas_fea/dev_notes.md        
   - About: about.md
