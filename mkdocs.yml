@@ -99,8 +99,29 @@ nav:
   - 'StrucEng Library Snippets':
       - Home: strucenglib_snippets/home.md
       - Basics:
-          - Workflow: strucenglib_plugin/workflow.md      
-          - Modules: strucenglib_plugin/modules.md      
+          - Overview: strucenglib_snippets/basics/overview.md      
+          - Workflow: strucenglib_snippets/basics/workflow.md     
+      - Actions on structures: 
+          - Load generators: strucenglib_snippets/load_generators/general.md     
+          - Self-Weight: strucenglib_snippets/load_generators/self_weight.md
+          - Imposed loads on buildings: strucenglib_snippets/load_generators/buildings.md     
+          - Actions on structures exposed to fire: strucenglib_snippets/load_generators/fire.md   
+          - General actions: strucenglib_snippets/load_generators/general.md   
+          - Traffic loads on bridges: strucenglib_snippets/load_generators/traffic_loads.md   
+          - Actions induced by cranes and machinery: strucenglib_snippets/load_generators/cranes_machinery.md   
+          - Silos and tanks: strucenglib_snippets/load_generators/cranes_machinery.md   
+      - Concrete Structures:           
+          - Material models: strucenglib_snippets/concrete_structures/material_models.md     
+          - Code checks: strucenglib_snippets/concrete_structures/code_checks.md  
+      - Masonry Structures:    
+          - Material models: strucenglib_snippets/masonry_structures/material_models.md     
+          - Code checks: strucenglib_snippets/masonry_structures/code_checks.md  
+      - Grafical outputs:
+          - Prepost plots: strucenglib_snippets/prepost_plots.md
+          - Numerical results: strucenglib_snippets/numerical_results.md      
+  - 'Patches for Compas FEA':
+      - Home: strucenglib_snippets/home.md
+      - Basics: strucenglib_snippets/basics.md   
       - Structure: strucenglib_snippets/structure.md   
       - Elements: strucenglib_snippets/elements.md
       - Sets: strucenglib_snippets/sets.md
@@ -114,10 +135,5 @@ nav:
       - Analyses: strucenglib_snippets/analyses.md             
       - Results: strucenglib_snippets/results.md             
       - Examples: strucenglib_snippets/examples.md             
-      - Developer Notes: strucenglib_snippets/dev_notes.md             
-  - 'Compas FEA':
-      - Home: compas_fea/home.md
-      - General: compas_fea/general.md
-      - Adjustments: compas_fea/adjustments.md
-      
+      - Developer Notes: strucenglib_snippets/dev_notes.md  
   - About: about.md
