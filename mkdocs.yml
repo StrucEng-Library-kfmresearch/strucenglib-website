@@ -102,12 +102,12 @@ nav:
           - Overview: strucenglib_snippets/basics/overview.md      
           - Workflow: strucenglib_snippets/basics/workflow.md     
       - Actions on structures: 
-          - Load generators: strucenglib_snippets/actions /general_generators.md     
-          - Self-Weight: strucenglib_snippets/ actions /self_weight.md
-          - Imposed loads on buildings: strucenglib_snippets/ actions /buildings.md     
-          - Actions on structures exposed to fire: strucenglib_snippets/ actions /fire.md   
+          - Load generators: strucenglib_snippets/actions/general_generators.md     
+          - Self-Weight: strucenglib_snippets/actions/self_weight.md
+          - Imposed loads on buildings: strucenglib_snippets/actions/buildings.md     
+          - Actions on structures exposed to fire: strucenglib_snippets/actions/fire.md   
           - General actions: strucenglib_snippets/actions/general.md   
-          - Traffic loads on bridges: strucenglib_snippets/ actions /traffic_loads.md         
+          - Traffic loads on bridges: strucenglib_snippets/actions/traffic_loads.md         
   - 'Patches for Compas FEA':
       - Home: compas_fea/home.md 
   - About: about.md
