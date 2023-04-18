@@ -1,1 +1,0 @@
-Werte werden aus "mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u', 'sf' ] )" für den Angegebenen Step exportiert und mit rhino.plot_data geplotet. Es ist darauf zu achnte, das in der Funktion rhino.plot_data für step (manuell) derselbe step wie bei der Funktion "mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u', 'sf' ] )" eingegeben ist
