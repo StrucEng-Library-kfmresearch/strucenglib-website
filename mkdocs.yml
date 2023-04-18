@@ -123,17 +123,15 @@ nav:
       - Home: compas_fea/home.md
       - Basics: compas_fea/basics.md   
       - Structure: compas_fea/structure.md   
-      - Elements: compas_fea/elements.md
-      - Sets: compas_fea/sets.md
-      - Materials: compas_fea/materials.md
+      - Elements: compas_fea/nodes.md
+      - Sets: compas_fea/elements.md
+      - Materials: compas_fea/sets.md
       - Sections: compas_fea/sections.md
-      - Properties: compas_fea/properties.md
-      - Constraints: compas_fea/constraints.md
-      - Prepost plots: compas_fea/prepost_plots.md
+      - Properties: compas_fea/materials.md
+      - Constraints: compas_fea/properties.md
       - Loads:  compas_fea/loads.md             
-      - Steps:  compas_fea/steps.md             
-      - Analyses: compas_fea/analyses.md             
-      - Results: compas_fea/results.md             
-      - Examples: compas_fea/examples.md             
+      - Steps:  compas_fea/displacements.md             
+      - Analyses: compas_fea/steps.md             
+      - Results: compas_fea/analysis.md                         
       - Developer Notes: compas_fea/dev_notes.md  
   - About: about.md
