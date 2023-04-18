@@ -104,16 +104,20 @@ nav:
       - Actions on structures: 
           - Load generators: strucenglib_snippets/actions/general_generators.md     
           - Self-Weight: strucenglib_snippets/actions/self_weight.md
-          - Imposed loads on buildings: strucenglib_snippets/actions/buildings.md     
-          - Actions on structures exposed to fire: strucenglib_snippets/actions/fire.md   
-          - General actions: strucenglib_snippets/actions/general.md   
+          - General actions: strucenglib_snippets/actions/general.md  
+          - Imposed loads on buildings: strucenglib_snippets/actions/buildings.md                      
           - Traffic loads on bridges: strucenglib_snippets/actions/traffic_loads.md  
+          - Seismic actions: strucenglib_snippets/actions/seismic.md
+          - Actions on structures exposed to fire: strucenglib_snippets/actions/fire.md   
       - Concrete structures: 
           - Material models: strucenglib_snippets/concrete_structures/material_models.md     
           - Code checks: strucenglib_snippets/actions/concrete_structures/code_checks.md          
       - Masonry structures: 
           - Material models: strucenglib_snippets/masonry_structures/material_models.md     
-          - Code checks: strucenglib_snippets/actions/masonry_structures/code_checks.md      
+          - Code checks: strucenglib_snippets/actions/masonry_structures/code_checks.md     
+      - Safety concepts: 
+          - PSF: strucenglib_snippets/saftey_concepts/psf.md
+          - ECOV: strucenglib_snippets/saftey_concepts/ecov.md
       - Grafical outputs:
           - Prepost plots: strucenglib_snippets/grafical_outputs/prepost_plots.md    
           - Numerical results: strucenglib_snippets/grafical_outputs/numerical_results.md            
