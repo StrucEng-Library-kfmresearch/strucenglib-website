@@ -120,7 +120,11 @@ nav:
           - ECOV: strucenglib_snippets/saftey_concepts/ecov.md
       - Grafical outputs:
           - Prepost plots: strucenglib_snippets/grafical_outputs/prepost_plots.md    
-          - Numerical results: strucenglib_snippets/grafical_outputs/numerical_results.md            
+          - Numerical results: strucenglib_snippets/grafical_outputs/numerical_results.md    
+      - Examples:
+          - Example 1: strucenglib_snippets/examples/all_functionalities.md
+          
+          
   - 'Patches for Compas FEA':
       - Home: compas_fea/home.md 
       - Basics: compas_fea/basics.md   
