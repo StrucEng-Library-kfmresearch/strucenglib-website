@@ -37,8 +37,8 @@ Upon installation of the plugin, various Python dependencies must be downloaded.
 Type `StrucEngLibInstallDependencies` in Rhino command line to open the dialog shown below.
 
 <figure markdown>
- ![install_ansys](https://user-images.githubusercontent.com/2311941/233223452-ac91024c-24ab-4b31-a04c-e1952069593e.PNG)
-  <figcaption>StrucEng Library Dependency Installer for Ansys</figcaption>
+![install_ansys](https://user-images.githubusercontent.com/2311941/233223452-ac91024c-24ab-4b31-a04c-e1952069593e.PNG)
+<figcaption>StrucEng Library Dependency Installer for Ansys</figcaption>
 </figure>
 
 Select __Select Directory__ and choose your Anacoda installation path ([Prerequisites](../prerequisites)). Create a new environment with __Create Environment__.
