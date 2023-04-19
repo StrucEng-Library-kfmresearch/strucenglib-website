@@ -1,3 +1,4 @@
+
 The StrucEngLib plugin issues a Finite Element Analysis Solver under-the-hood. Ensure to have [Prerequisites](./prerequisites.md) installed before you continue.
 
 ## Install Ansys
@@ -40,11 +41,13 @@ Type `StrucEngLibInstallDependencies` in Rhino command line to open the dialog s
   <figcaption>StrucEng Library Dependency Installer</figcaption>
 </figure>
 
-Select __Select Directory__ and choose your Anacoda installation path ([Prerequisites](../prerequisites)).
+Select __Select Directory__ and choose your Anacoda installation path ([Prerequisites](../prerequisites)). Create a new environment with __Create Environment__.
 The StrucEngLib Plugin issues Anaconda to create a new virtual environment and
-install all required Python dependencies. Hit __Install__ to download the software packages. The installation may take some minutes.
+install all required Python dependencies. Hit __Install for Ansys__ to download the software packages. The installation may take some minutes. 
 
 Subsequently, press __Test Import__ to verify installation. Upon failure, an error message is shown.
+
+![install_ansys](https://user-images.githubusercontent.com/2311941/233221755-50503921-f8a0-45bd-ac2d-ecb162fad0c6.PNG)
 
 !!! note
     - The installer uses Compas to install Python dependencies into Rhino's include directory `%AppData%\McNeel\Rhinoceros\7.0\scripts`. 
