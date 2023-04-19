@@ -41,8 +41,8 @@ Upon installation of the plugin, various Python dependencies must be downloaded.
 Type `StrucEngLibInstallDependencies` in Rhino command line to open the dialog shown below.
 
 <figure markdown>
-  ![](assets/installer.png){width=500px}
-  <figcaption>StrucEng Library Dependency Installer</figcaption>
+    ![install_abaqus](https://user-images.githubusercontent.com/2311941/233221581-224190c0-2fcb-4f0a-b5b7-49f253d263ca.PNG)
+  <figcaption>StrucEng Library Dependency Installer for Abaqus</figcaption>
 </figure>
 
 Select __Select Directory__ and choose your Anacoda installation path ([Prerequisites](../prerequisites)).
@@ -51,7 +51,7 @@ install all required Python dependencies. Hit __Install for Abaqus__ to download
 
 Subsequently, press __Test Import__ to verify installation. Upon failure, an error message is shown.
 
-![install_abaqus](https://user-images.githubusercontent.com/2311941/233221581-224190c0-2fcb-4f0a-b5b7-49f253d263ca.PNG)
+
 
 !!! note
     - The installer uses Compas to install Python dependencies into Rhino's include directory `%AppData%\McNeel\Rhinoceros\7.0\scripts`. 
