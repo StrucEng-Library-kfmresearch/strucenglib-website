@@ -46,8 +46,8 @@ The StrucEngLib Plugin issues Anaconda to create a new virtual environment and
 install all required Python dependencies. Hit __Install for Ansys__ to download the software packages. The installation may take some minutes. 
 
 Subsequently, press __Test Import__ to verify installation. Upon failure, an error message is shown.
+![install_ansys](https://user-images.githubusercontent.com/2311941/233222295-7d2f5db8-03e8-46aa-9bbe-6adb87e0ffd6.PNG)
 
-![install_ansys](https://user-images.githubusercontent.com/2311941/233221755-50503921-f8a0-45bd-ac2d-ecb162fad0c6.PNG)
 
 !!! note
     - The installer uses Compas to install Python dependencies into Rhino's include directory `%AppData%\McNeel\Rhinoceros\7.0\scripts`. 
