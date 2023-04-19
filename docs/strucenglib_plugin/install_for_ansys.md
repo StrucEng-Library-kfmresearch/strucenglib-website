@@ -37,7 +37,7 @@ Upon installation of the plugin, various Python dependencies must be downloaded.
 Type `StrucEngLibInstallDependencies` in Rhino command line to open the dialog shown below.
 
 <figure markdown>
-  ![install_ansys](https://user-images.githubusercontent.com/2311941/233222295-7d2f5db8-03e8-46aa-9bbe-6adb87e0ffd6.PNG)
+ ![install_ansys](https://user-images.githubusercontent.com/2311941/233223452-ac91024c-24ab-4b31-a04c-e1952069593e.PNG)
   <figcaption>StrucEng Library Dependency Installer for Ansys</figcaption>
 </figure>
 
