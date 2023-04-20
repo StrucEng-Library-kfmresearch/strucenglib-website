@@ -41,7 +41,7 @@ Upon installation of the plugin, various Python dependencies must be downloaded.
 Type `StrucEngLibInstallDependencies` in Rhino command line to open the dialog shown below.
 
 <figure markdown>
-![install_abaqus](./assets/install_abaqus.PNG)
+![](./assets/install_abaqus.PNG)
 <figcaption>StrucEng Library Dependency Installer for Abaqus</figcaption>
 </figure>
 
