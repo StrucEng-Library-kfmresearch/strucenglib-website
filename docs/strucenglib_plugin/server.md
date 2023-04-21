@@ -56,8 +56,8 @@ mdl = connect.analyse_and_extract('ws://ibkpika.ethz.ch:8080/api/compute', mdl, 
 # ...
 ```
 Analyse_and_extract can either be executed locally (1.) or remotely (2.).
-Remote and local invocations accept the same set of compas FEA parameters.
+Remote and local invocations accept the same set of compas FEA parameters. The connection layer strucenglib-connect acts as a proxy which serializes and forwards model data to the remote server.
 
 ## Source Code
-The server component is hosted on [GitHub](https://github.com/kfmResearch-NumericsTeam/Struc_Eng_Library_Server).
+The server component and more implementation details are available on [GitHub](https://github.com/kfmResearch-NumericsTeam/Struc_Eng_Library_Server).
 
