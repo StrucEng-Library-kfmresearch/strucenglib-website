@@ -43,13 +43,18 @@ If you prefer to edit the website locally without Github's UI, execute the follo
 Install python 3 and pip.
 
 ```sh
+
 # 1. create new virtual environment (optional)
 
-# 2. install dependencies
+# 2. open Anaconda prompt and go to our directory wehre the clodnes code from the strucenglib-website is saved (use command cd)
+
+# 3. install dependencies
 pip install -r ./.github/requirements.txt
 
-# 3. serve content
+# 4. serve content
 mkdocs serve
+
+# 5. Merge/Push in Master
 
 ```
 
