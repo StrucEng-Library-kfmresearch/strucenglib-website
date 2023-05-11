@@ -1,0 +1,3 @@
+[submodule "compas"]
+	path = compas
+	url = git@github.com:StrucEng-Library-kfmresearch/compas.git

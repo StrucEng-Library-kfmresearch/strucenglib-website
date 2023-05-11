@@ -1,0 +1,2 @@
+html_theme = "alabaster"
+# html_baseurl = '/docs/compas_fea/'
