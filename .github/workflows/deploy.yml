@@ -26,7 +26,7 @@ jobs:
           cd ../
           mkdir -p dist/docs
           cp -rf compas/docs dist/docs/
-          ls -al dist/docs/
+          ls -al dist/docs/docs/
 
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
@@ -37,3 +37,9 @@ jobs:
           EXTRA_PACKAGES: build-base
           CUSTOM_DOMAIN: strucenglib.ethz.ch
           REQUIREMENTS: .github/requirements.txt
+          
+      - name: check
+        run: |   
+         ls -al
+         cd dist
+         ls -al
