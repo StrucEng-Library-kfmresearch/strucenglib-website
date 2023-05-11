@@ -31,7 +31,7 @@ jobs:
       - name: check
         run: |   
          ls -al
-         chmod 777 -R ./site
+         sudo chmod 777 -R ./site
          cd site
          ls -al
          cd ../
