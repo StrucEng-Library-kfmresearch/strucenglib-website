@@ -28,16 +28,11 @@ jobs:
           CUSTOM_DOMAIN: strucenglib.ethz.ch
           REQUIREMENTS: .github/requirements.txt
           
-      - name: check
+      - name: fix-permissions
         run: |   
-         ls -al
          sudo chmod 777 -R ./site
-         cd site
-         ls -al
-         cd ../
          
-         
-      - name: git-compas
+      - name: add-compas-doc
         run: |
           git clone https://github.com/StrucEng-Library-kfmresearch/strucenglib-website.git compas
           cd compas
@@ -45,10 +40,10 @@ jobs:
           ls -al
           cd ../
           mkdir -p site/docs
-          cp -rf compas/docs site/docs/
+          cp -rf compas/docs/* site/docs/
           ls -al site/docs
 
-      - name: git-compas-fea
+      - name: add-compas_fea-doc
         run: |
           git clone https://github.com/StrucEng-Library-kfmresearch/strucenglib-website.git compas_fea
           cd compas_fea
@@ -56,10 +51,10 @@ jobs:
           ls -al
           cd ../
           mkdir -p site/docs
-          cp -rf compas_fea/docs site/docs/
+          cp -rf compas_fea/docs/* site/docs/
           ls -al site/docs
 
-      - name: Deploy
+      - name: deploy-mkdocs-with-compas-doc
         uses: peaceiris/actions-gh-pages@v3
         # If you're changing the branch from main,
         # also change the `master` in `refs/heads/master`
