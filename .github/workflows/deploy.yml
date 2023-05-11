@@ -52,7 +52,7 @@ jobs:
         run: |
           git clone https://github.com/StrucEng-Library-kfmresearch/strucenglib-website.git compas_fea
           cd compas_fea
-          git checkout docs/compas_fea
+          git switch docs/compas_fea
           ls -al
           cd ../
           mkdir -p site/docs
