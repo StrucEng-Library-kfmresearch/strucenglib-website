@@ -20,8 +20,13 @@ jobs:
       - name: git
         run: |
           git clone https://github.com/StrucEng-Library-kfmresearch/strucenglib-website.git compas
+          cd compas
+          git checkout docs/compas
+          ls -al
+          cd ../
           mkdir -p dist/docs
           cp -rf compas/docs dist/docs/
+          ls -al dist/docs/
 
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
