@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Remote Procedure Calls &#8212; COMPAS 1.16.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Geometric Maps" href="geomaps.html" />
+    <link rel="prev" title="Numerical Data" href="numericaldata.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="remote-procedure-calls">
+<h1>Remote Procedure Calls</h1>
+<p>Remote Procedure Calls (<code class="docutils literal notranslate"><span class="pre">RPC</span></code>) is a mechanism to transparently execute code in
+a remote process or computer. This is especially useful in scenarios where COMPAS
+runs inside an IronPython host (eg. Rhino) and needs to execute code that only
+runs on CPython (eg. code that requires <code class="docutils literal notranslate"><span class="pre">numpy</span></code>).</p>
+<section id="basic-usage">
+<h2>Basic Usage</h2>
+<p>The basic usage of RPC is simple.
+For example, consider a CPython script using the Force Density method.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">compas.numerical</span> <span class="kn">import</span> <span class="n">fd_numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">fd_numpy</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This script does not work in Rhino or GH because Numpy is not available.
+Therefore, instead of importing and calling the function directly,
+we call it through a proxy object.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">compas.rpc</span> <span class="kn">import</span> <span class="n">Proxy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numerical</span> <span class="o">=</span> <span class="n">Proxy</span><span class="p">(</span><span class="s1">&#39;compas.numerical&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">numerical</span><span class="o">.</span><span class="n">fd_numpy</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To use functions from more than one package in the same script, simply change the
+package attribute of the proxy object, which determines where the proxy will look
+for the requested function.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">compas.rpc</span> <span class="kn">import</span> <span class="n">Proxy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proxy</span> <span class="o">=</span> <span class="n">Proxy</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proxy</span><span class="o">.</span><span class="n">package</span> <span class="o">=</span> <span class="s1">&#39;compas.numerical&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proxy</span><span class="o">.</span><span class="n">fd_numpy</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proxy</span><span class="o">.</span><span class="n">package</span> <span class="o">=</span> <span class="s1">&#39;compas.geometry&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proxy</span><span class="o">.</span><span class="n">bestfit_plane_numpy</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The use of <a class="reference external" href="https://compas.dev/compas/latest/api/compas.rpc.html#module-compas.rpc" title="(in COMPAS v1.17)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">compas.rpc</span></code></a> is not restricted to COMPAS packages only.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">compas.rpc</span> <span class="kn">import</span> <span class="n">Proxy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linalg</span> <span class="o">=</span> <span class="n">Proxy</span><span class="p">(</span><span class="s1">&#39;scipy.linalg&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that Numpy arrays are automatically converted to lists.</p>
+</section>
+<section id="configuration-options">
+<h2>Configuration Options</h2>
+<p>The <a class="reference external" href="https://compas.dev/compas/latest/api/generated/compas.rpc.Proxy.html#compas.rpc.Proxy" title="(in COMPAS v1.17)"><code class="xref py py-class docutils literal notranslate"><span class="pre">compas.rpc.Proxy</span></code></a> object has several configuration options.
+We will discuss only a few of those here.
+For a complete overview, please refer to the API docs (<a class="reference external" href="https://compas.dev/compas/latest/api/compas.rpc.html#module-compas.rpc" title="(in COMPAS v1.17)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">compas.rpc</span></code></a>).</p>
+<section id="python">
+<h3><code class="docutils literal notranslate"><span class="pre">python</span></code></h3>
+<p>The <a class="reference external" href="https://compas.dev/compas/latest/api/generated/compas.rpc.Proxy.html#compas.rpc.Proxy" title="(in COMPAS v1.17)"><code class="xref py py-class docutils literal notranslate"><span class="pre">compas.rpc.Proxy</span></code></a> object will automatically try to reconnect to an
+active instance of the command server, or start a new one if no active server can be found.
+By default, a newly started server will run an instance of the default Python interpreter
+of the active environment, for example, when running RPC from the command line;
+or of the Python interpreter specified in <cite>compas_bootstrapper</cite>, for example, when running RPC from Rhino.</p>
+<p>In some cases, this might not be what you want, or might not result in the expected behaviour,
+for example when <cite>compas_bootstrapper</cite> does not exist.</p>
+<p>To use a specific Python iterpreter, you can specify the path to an executable through the <code class="docutils literal notranslate"><span class="pre">python</span></code> parameter.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">compas.rpc</span> <span class="kn">import</span> <span class="n">Proxy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proxy</span> <span class="o">=</span> <span class="n">Proxy</span><span class="p">(</span><span class="n">python</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Users</span><span class="se">\\</span><span class="s2">&lt;username&gt;</span><span class="se">\\</span><span class="s2">anaconda3</span><span class="se">\\</span><span class="s2">envs</span><span class="se">\\</span><span class="s2">research</span><span class="se">\\</span><span class="s2">python.exe&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="path">
+<h3><code class="docutils literal notranslate"><span class="pre">path</span></code></h3>
+<p>Sometimes you will want the server to run custom functions that are not (yet) part of a specific package.
+To allow the server to find such functions, you can specify an additional search path.</p>
+<p>For example, if you have a Python script on your desktop,
+defining a wrapper for the k-means clustering algorithm of <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>,
+you can tell the command server where to find it using the <code class="docutils literal notranslate"><span class="pre">path</span></code> parameter.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># C:\Users\&lt;username&gt;\Desktop\clustering.py</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">array</span>
+
+
+<span class="k">def</span> <span class="nf">cluster</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">n_clusters</span><span class="p">):</span>
+    <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">array</span><span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span>
+    <span class="n">clusters</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">point</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> <span class="n">cloud</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">label</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">:</span>
+            <span class="n">clusters</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">clusters</span><span class="p">[</span><span class="n">label</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">clusters</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">compas.geometry</span> <span class="kn">import</span> <span class="n">Pointcloud</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">compas.rpc</span> <span class="kn">import</span> <span class="n">Proxy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cloud</span> <span class="o">=</span> <span class="n">Pointcloud</span><span class="o">.</span><span class="n">from_bounds</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proxy</span> <span class="o">=</span> <span class="n">Proxy</span><span class="p">(</span><span class="n">package</span><span class="o">=</span><span class="s1">&#39;clustering&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Users</span><span class="se">\\</span><span class="s1">&lt;username&gt;</span><span class="se">\\</span><span class="s1">Desktop&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clusters</span> <span class="o">=</span> <span class="n">proxy</span><span class="o">.</span><span class="n">cluster</span><span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="supported-data-types">
+<h2>Supported data types</h2>
+<p><a class="reference external" href="https://compas.dev/compas/latest/api/compas.rpc.html#module-compas.rpc" title="(in COMPAS v1.17)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">compas.rpc</span></code></a> uses JSON serialization to transfer data between the “client”
+(your script) and the server running the selected CPython environment.</p>
+<p>All COMPAS objects (primitives, shapes, data structures, etc.) support JSON
+serialization through their <code class="docutils literal notranslate"><span class="pre">to_json</span></code> <code class="docutils literal notranslate"><span class="pre">from_json</span></code> methods. On a lower level,
+these methods convert (complex) internal data to simple dictionaries, and
+vice versa, with <code class="docutils literal notranslate"><span class="pre">to_data</span></code> and <code class="docutils literal notranslate"><span class="pre">from_data</span></code>.</p>
+<p>In combination with custom JSON encoders and decoders this allows for COMPAS
+objects to be serialized and de-serialized without loss of information on either
+side of the RPC communication network.</p>
+<p>Therefore the data types supported by <a class="reference external" href="https://compas.dev/compas/latest/api/compas.rpc.html#module-compas.rpc" title="(in COMPAS v1.17)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">compas.rpc</span></code></a> include all native Python
+data types and COMPAS objects. Numpy arrays are automatically converted to lists.</p>
+</section>
+<section id="starting-and-stopping">
+<h2>Starting and Stopping</h2>
+<p>Once a server is started it will keep running “as long as possible”.
+There are many reasons to stop and (re)start the server during its lifetime.
+For example, to load functionality from a different conda environment, or to
+load changes that were made to the packages in the environment after it was started.
+This happens frequently while a package is still under active development.</p>
+<p>Stopping and starting the server is easy.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">compas.rpc</span> <span class="kn">import</span> <span class="n">Proxy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proxy</span> <span class="o">=</span> <span class="n">Proxy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proxy</span><span class="o">.</span><span class="n">stop_server</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proxy</span><span class="o">.</span><span class="n">start_server</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>To restart the server after every call, you can use a context manager.
+When used in this way, RPC behaves much like its predecessor <code class="docutils literal notranslate"><span class="pre">XFunc</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Proxy</span><span class="p">(</span><span class="s1">&#39;compas.numerical&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">numerical</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">numerical</span><span class="o">.</span><span class="n">fd_numpy</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+</section>
+<section id="starting-an-rpc-server-manually">
+<h2>Starting an RPC server manually</h2>
+<p><code class="docutils literal notranslate"><span class="pre">Proxy</span></code> will try to start an RPC server automatically
+if no server is already running, but very often it is recommended
+to start it manually from the command-line.</p>
+<p>To start a new RPC server use the following command on the terminal
+(default port is <code class="docutils literal notranslate"><span class="pre">1753</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ compas_rpc start [--port PORT]
+</pre></div>
+</div>
+<p>Conversely, to stop an existing RPC server:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ compas_rpc stop [--port PORT]
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If COMPAS is installed in a virtual environment, make sure it is activated
+before trying to use this command-line utility.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently, the RPC server is launched on the <code class="docutils literal notranslate"><span class="pre">localhost</span></code>.
+However, it would also be possible to launch it on a remote computer on a
+network, or on a server reachable over the internet.</p>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">COMPAS</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.html">Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="networks.html">Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meshes.html">Meshes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="volmeshes.html">Vol(umetric) Meshes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robots.html">Robots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numericaldata.html">Numerical Data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Remote Procedure Calls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geomaps.html">Geometric Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotters.html">Plotters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="colors.html">Colors and Color Maps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins.html">Extension points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devguide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases.html">Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citing.html">Citing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../tutorial.html">Tutorial</a><ul>
+      <li>Previous: <a href="numericaldata.html" title="previous chapter">Numerical Data</a></li>
+      <li>Next: <a href="geomaps.html" title="next chapter">Geometric Maps</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;Block Research Group - ETH Zurich.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

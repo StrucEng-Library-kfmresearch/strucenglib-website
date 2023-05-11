@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Numerical Data &#8212; COMPAS 1.16.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Remote Procedure Calls" href="rpc.html" />
+    <link rel="prev" title="Robots" href="robots.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="numerical-data">
+<h1>Numerical Data</h1>
+<p>When working with numerical algorithms, the information stored in a data structure
+needs to be converted to lists and/or arrays as input for the algorithm.
+Afterwards, the result needs to be integrated back into the data structure.</p>
+<p>Although the identifiers of mesh vertices are integers (like the indices in a list)
+and identifiers are added automatically in ascending order,
+the ordering is not necessarily contiguous, nor continuous after certain mesh operations.</p>
+<p>Therefore, when converting data structure data to numerical data,
+it is important that identifiers of the data in the data structure
+are properly matched to the positions of the same data in the corresponding lists or arrays.</p>
+<p>For example, the proper way to run a Force Density algorithm (<a class="reference external" href="https://compas.dev/compas/latest/api/generated/compas.numerical.fd_numpy.html#compas.numerical.fd_numpy" title="(in COMPAS v1.17)"><code class="xref py py-func docutils literal notranslate"><span class="pre">compas.numerical.fd_numpy()</span></code></a>)
+on a mesh uses a <code class="docutils literal notranslate"><span class="pre">vertex_index</span></code> map to take care of this relationship between identifiers and indices.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">compas</span>
+<span class="kn">from</span> <span class="nn">compas.datastructures</span> <span class="kn">import</span> <span class="n">Mesh</span>
+<span class="kn">from</span> <span class="nn">compas.numerical</span> <span class="kn">import</span> <span class="n">fd_numpy</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="o">.</span><span class="n">from_obj</span><span class="p">(</span><span class="n">compas</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;faces.obj&#39;</span><span class="p">))</span>
+
+<span class="n">mesh</span><span class="o">.</span><span class="n">update_default_vertex_attributes</span><span class="p">({</span><span class="s1">&#39;px&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;py&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;pz&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">})</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">update_default_edge_attributes</span><span class="p">({</span><span class="s1">&#39;q&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">})</span>
+
+<span class="n">xyz</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">vertices_attributes</span><span class="p">(</span><span class="s1">&#39;xyz&#39;</span><span class="p">)</span>
+<span class="n">loads</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">number_of_vertices</span><span class="p">())]</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">edges_attribute</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+
+<span class="n">vertex_index</span> <span class="o">=</span> <span class="p">{</span><span class="n">vertex</span><span class="p">:</span> <span class="n">index</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">vertex</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">vertices</span><span class="p">())}</span>
+
+<span class="n">fixed</span> <span class="o">=</span> <span class="p">[</span><span class="n">vertex_index</span><span class="p">[</span><span class="n">vertex</span><span class="p">]</span> <span class="k">for</span> <span class="n">vertex</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">vertices_where</span><span class="p">({</span><span class="s1">&#39;vertex_degree&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})]</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">vertex_index</span><span class="p">[</span><span class="n">u</span><span class="p">],</span> <span class="n">vertex_index</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">edges</span><span class="p">()]</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">fd_numpy</span><span class="p">(</span><span class="n">xyz</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">fixed</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">loads</span><span class="p">)</span>
+<span class="n">xyz</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">vertex</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">vertices</span><span class="p">():</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">vertex_index</span><span class="p">[</span><span class="n">vertex</span><span class="p">]</span>
+    <span class="n">mesh</span><span class="o">.</span><span class="n">vertex_attributes</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="s1">&#39;xyz&#39;</span><span class="p">,</span> <span class="n">xyz</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>In short, this example
+creates a mesh from a sample file,
+assignes default attributes to the vertices and the edges,
+compiles the numerical data,
+runs the algorithm,
+and updates the data structure with the result.</p>
+<p>The coordinates of the vertices are assembled in the list <code class="docutils literal notranslate"><span class="pre">xyz</span></code>,
+and the loads on the vertices in the list <code class="docutils literal notranslate"><span class="pre">loads</span></code>.
+The force densities in the edges are in the list <code class="docutils literal notranslate"><span class="pre">q</span></code>.
+The list <code class="docutils literal notranslate"><span class="pre">fixed</span></code> identifies the vertices which should stay in a fixed location during the form finding process,
+and <code class="docutils literal notranslate"><span class="pre">edges</span></code> contains pairs of vertices that will be used by the algorithm to define a connectivity matrix.</p>
+<p>To make sure all lists refer to each other correctly,
+the <cite>vertex_index</cite> <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a> creates a map between the identifiers of vertices in the data structure
+and the order in which they appear in lists.
+The map is used in three different ways.</p>
+<ol class="arabic">
+<li><p>To convert the identifiers of fixed vertices (vertices with only two neighbours =&gt; corner vertices)
+to indices into the lists <code class="docutils literal notranslate"><span class="pre">xyz</span></code> and <code class="docutils literal notranslate"><span class="pre">loads</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fixed</span> <span class="o">=</span> <span class="p">[</span><span class="n">vertex_index</span><span class="p">[</span><span class="n">vertex</span><span class="p">]</span> <span class="k">for</span> <span class="n">vertex</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">vertices_where</span><span class="p">({</span><span class="s1">&#39;vertex_degree&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})]</span>
+</pre></div>
+</div>
+</li>
+<li><p>To convert the pairs of vertex identifiers in <code class="docutils literal notranslate"><span class="pre">edges</span></code> to pairs of indices into the lists <code class="docutils literal notranslate"><span class="pre">xyz</span></code> and <code class="docutils literal notranslate"><span class="pre">loads</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">edges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">vertex_index</span><span class="p">[</span><span class="n">u</span><span class="p">],</span> <span class="n">vertex_index</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">edges</span><span class="p">()]</span>
+</pre></div>
+</div>
+</li>
+<li><p>To make sure the new vertex coordinates are assigned to the correct vertices in the data structure.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">vertex</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">vertices</span><span class="p">():</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">vertex_index</span><span class="p">[</span><span class="n">vertex</span><span class="p">]</span>
+    <span class="n">mesh</span><span class="o">.</span><span class="n">vertex_attributes</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="s1">&#39;xyz&#39;</span><span class="p">,</span> <span class="n">xyz</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">COMPAS</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.html">Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="networks.html">Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meshes.html">Meshes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="volmeshes.html">Vol(umetric) Meshes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robots.html">Robots</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Numerical Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpc.html">Remote Procedure Calls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geomaps.html">Geometric Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotters.html">Plotters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="colors.html">Colors and Color Maps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins.html">Extension points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devguide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases.html">Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citing.html">Citing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../tutorial.html">Tutorial</a><ul>
+      <li>Previous: <a href="robots.html" title="previous chapter">Robots</a></li>
+      <li>Next: <a href="rpc.html" title="next chapter">Remote Procedure Calls</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;Block Research Group - ETH Zurich.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
