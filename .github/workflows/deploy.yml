@@ -16,6 +16,12 @@ jobs:
     steps:
       - name: Checkout main
         uses: actions/checkout@v2
+        
+      - name: git
+        run: |
+          git clone https://github.com/StrucEng-Library-kfmresearch/strucenglib-website.git compas
+          mkdir -p dist/docs
+          cp -rf compas/docs dist/docs/
 
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
