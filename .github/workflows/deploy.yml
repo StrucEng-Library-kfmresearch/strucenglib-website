@@ -27,7 +27,7 @@ jobs:
           mkdir -p site/docs
           cp -rf compas/docs site/docs/
           ls -al site/docs/docs/
-           - name: git-compas
+
       - name: git-compas-fea
         run: |
           git clone https://github.com/StrucEng-Library-kfmresearch/strucenglib-website.git compas_fea
