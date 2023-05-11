@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>App &#8212; COMPAS FEA 0.3.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Examples" href="../examples.html" />
+    <link rel="prev" title="CAD" href="13_cad.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="app">
+<h1>App</h1>
+<p>This page describes the use of the <strong>compas_fea</strong> App, which can be used for visualising the geometry of the created <strong>Structure</strong> and for plotting the results from an analysis. The App is still experimental and has only limited functionality, it requires PyOpenGL, VTK and PyQt5 to function.</p>
+<section id="viewing-the-structure">
+<h2>Viewing the Structure</h2>
+<p>The App may be invoked by using the <code class="docutils literal notranslate"><span class="pre">.view()</span></code> method, which will take the geometry information stored in the <code class="docutils literal notranslate"><span class="pre">.nodes</span></code> and <code class="docutils literal notranslate"><span class="pre">.elements</span></code> dictionaries, and plot a 3D representation of the <strong>Structure</strong> in a graphical user interface. To load and view a <strong>Structure</strong> from an existing <code class="docutils literal notranslate"><span class="pre">.obj'</span></code> file, use the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">compas_fea.structure</span> <span class="kn">import</span> <span class="n">Structure</span>
+
+<span class="n">fnm</span> <span class="o">=</span> <span class="s1">&#39;/home/al/mesh_floorroof.obj&#39;</span>  <span class="c1"># location of .obj file</span>
+
+<span class="n">mdl</span> <span class="o">=</span> <span class="n">Structure</span><span class="o">.</span><span class="n">load_from_obj</span><span class="p">(</span><span class="n">fnm</span><span class="p">)</span>  <span class="c1"># load Structure from .obj file</span>
+<span class="n">mdl</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>  <span class="c1"># open the App</span>
+</pre></div>
+</div>
+<p>The App will plot 1D line elements in blue for beams, red for trusses and yellow for springs, and plot 2D shell elements as mesh faces in green. The <em>Opacity</em> slider on the left-hand-side changes the transparency of the mesh and its edges, and the <em>Vertex size</em> slider adjusts the size of the structural nodes (set to zero for no node display).</p>
+<a class="reference internal image-reference" href="../_images/app_edges.png"><img alt="../_images/app_edges.png" src="../_images/app_edges.png" style="width: 674.1px; height: 458.55px;" /></a>
+<p>Using the <em>Edge width</em> slider allows the thickness of the mesh face edges to be altered, if this is taken to zero (i.e. edge display turned off), this may help to more clearly see the main structure by hiding the individual discretised elements.</p>
+<a class="reference internal image-reference" href="../_images/app_no_edges.png"><img alt="../_images/app_no_edges.png" src="../_images/app_no_edges.png" style="width: 672.75px; height: 458.55px;" /></a>
+<p>Nodal and element analysis results can be plotted on top of the visualisation mesh, by first selecting the relevant <strong>Step</strong> from the <em>Steps</em> listbox, and then selecting the field of interest from either the <em>Fields (nodal)</em> or <em>Fields (element)</em> listboxes. <strong>Note</strong>: that the first <strong>Step</strong> (here <em>step_bc</em>) that is associated with the structure’s displacement boundary conditions before loading, will not have any analysis results to plot.</p>
+<a class="reference internal image-reference" href="../_images/app_nodal.png"><img alt="../_images/app_nodal.png" src="../_images/app_nodal.png" style="width: 673.65px; height: 457.2px;" /></a>
+<p>For the element data, use the <em>iptype</em> and <em>nodal</em> listboxes, which have entries of <em>min</em>, <em>max</em> and <em>mean</em>, to further adjust the way element data is transferred to the nodes as vertex colours on the visualisation mesh.</p>
+<a class="reference internal image-reference" href="../_images/app_element.png"><img alt="../_images/app_element.png" src="../_images/app_element.png" style="width: 673.2px; height: 457.65000000000003px;" /></a>
+<p>The analysis results will be plotted on the deformed structure for the selected <strong>Step</strong>. To change the scale of the deformations use the <em>Scale</em> slider, by default deformations are scaled to 1, they can be turned off by setting this slider to 0, or magnified up to a scale of 1000.</p>
+<a class="reference internal image-reference" href="../_images/app_scale.png"><img alt="../_images/app_scale.png" src="../_images/app_scale.png" style="width: 671.85px; height: 457.2px;" /></a>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">COMPAS FEA</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_basics.html">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_structure.html">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_nodes.html">Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_elements.html">Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_sets.html">Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_sections.html">Sections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07_material.html">Materials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08_properties.html">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="09_loads.html">Loads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_displacements.html">Displacements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_steps.html">Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_analysis.html">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13_cad.html">CAD</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">App</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../tutorial.html">Tutorial</a><ul>
+      <li>Previous: <a href="13_cad.html" title="previous chapter">CAD</a></li>
+      <li>Next: <a href="../examples.html" title="next chapter">Examples</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;Block Research Group - ETH Zurich.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

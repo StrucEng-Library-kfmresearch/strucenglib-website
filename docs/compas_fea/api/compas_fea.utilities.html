@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>utilities &#8212; COMPAS FEA 0.3.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="colorbar" href="generated/compas_fea.utilities.colorbar.html" />
+    <link rel="prev" title="BucklingStep" href="generated/compas_fea.structure.BucklingStep.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <span class="target" id="module-compas_fea.utilities"></span><section id="utilities">
+<h1>utilities</h1>
+<p>The compas_fea package’s supporting utilities and functions.</p>
+<section id="functions">
+<h2>functions</h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/compas_fea.utilities.colorbar.html#compas_fea.utilities.colorbar" title="compas_fea.utilities.colorbar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorbar</span></code></a>(fsc[, input, type])</p></td>
+<td><p>Creates RGB color information from -1 to 1 scaled values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/compas_fea.utilities.combine_all_sets.html#compas_fea.utilities.combine_all_sets" title="compas_fea.utilities.combine_all_sets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">combine_all_sets</span></code></a>(sets_a, sets_b)</p></td>
+<td><p>Combines two nested lists of node or element sets into the minimum ammount of set combinations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/compas_fea.utilities.group_keys_by_attribute.html#compas_fea.utilities.group_keys_by_attribute" title="compas_fea.utilities.group_keys_by_attribute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group_keys_by_attribute</span></code></a>(adict, name[, tol])</p></td>
+<td><p>Make group keys by shared attribute values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/compas_fea.utilities.group_keys_by_attributes.html#compas_fea.utilities.group_keys_by_attributes" title="compas_fea.utilities.group_keys_by_attributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group_keys_by_attributes</span></code></a>(adict, names[, tol])</p></td>
+<td><p>Make group keys by shared values of attributes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/compas_fea.utilities.identify_ranges.html#compas_fea.utilities.identify_ranges" title="compas_fea.utilities.identify_ranges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identify_ranges</span></code></a>(data)</p></td>
+<td><p>Identifies continuous interger series from a list and returns a list of ranges.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/compas_fea.utilities.mesh_from_shell_elements.html#compas_fea.utilities.mesh_from_shell_elements" title="compas_fea.utilities.mesh_from_shell_elements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mesh_from_shell_elements</span></code></a>(structure)</p></td>
+<td><p>Returns a Mesh datastructure object from a Structure's ShellElement objects.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/compas_fea.utilities.network_order.html#compas_fea.utilities.network_order" title="compas_fea.utilities.network_order"><code class="xref py py-obj docutils literal notranslate"><span class="pre">network_order</span></code></a>(start, structure, network)</p></td>
+<td><p>Extract node and element orders from a Network for a given start-point.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/compas_fea.utilities.normalise_data.html#compas_fea.utilities.normalise_data" title="compas_fea.utilities.normalise_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalise_data</span></code></a>(data, cmin, cmax)</p></td>
+<td><p>Normalise a vector of data to between -1 and 1.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/compas_fea.utilities.principal_stresses.html#compas_fea.utilities.principal_stresses" title="compas_fea.utilities.principal_stresses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">principal_stresses</span></code></a>(data)</p></td>
+<td><p>Performs principal stress calculations solving the eigenvalues problem.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/compas_fea.utilities.process_data.html#compas_fea.utilities.process_data" title="compas_fea.utilities.process_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_data</span></code></a>(data, dtype, iptype, nodal, ...)</p></td>
+<td><p>Process the raw data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/compas_fea.utilities.postprocess.html#compas_fea.utilities.postprocess" title="compas_fea.utilities.postprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">postprocess</span></code></a>(nodes, elements, ux, uy, uz, ...)</p></td>
+<td><p>Post-process data from analysis results for given step and field.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="meshing">
+<h2>meshing</h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/compas_fea.utilities.discretise_faces.html#compas_fea.utilities.discretise_faces" title="compas_fea.utilities.discretise_faces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">discretise_faces</span></code></a>(vertices, faces, target[, ...])</p></td>
+<td><p>Make discretised triangles from input coarse triangles data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/compas_fea.utilities.extrude_mesh.html#compas_fea.utilities.extrude_mesh" title="compas_fea.utilities.extrude_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extrude_mesh</span></code></a>(structure, mesh, layers, ...)</p></td>
+<td><p>Extrudes a Mesh and adds elements to a Structure.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/compas_fea.utilities.tets_from_vertices_faces.html#compas_fea.utilities.tets_from_vertices_faces" title="compas_fea.utilities.tets_from_vertices_faces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tets_from_vertices_faces</span></code></a>(vertices, faces[, ...])</p></td>
+<td><p>Generate tetrahedron points and elements with MeshPy (TetGen).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">COMPAS FEA</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="compas_fea.html">compas_fea</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../api.html">API Reference</a><ul>
+  <li><a href="compas_fea.html">compas_fea</a><ul>
+      <li>Previous: <a href="generated/compas_fea.structure.BucklingStep.html" title="previous chapter">BucklingStep</a></li>
+      <li>Next: <a href="generated/compas_fea.utilities.colorbar.html" title="next chapter">colorbar</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;Block Research Group - ETH Zurich.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

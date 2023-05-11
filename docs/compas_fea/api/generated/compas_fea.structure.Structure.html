@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Structure &#8212; COMPAS FEA 0.3.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Structure.add_nodes_elements_from_mesh" href="compas_fea.structure.Structure.add_nodes_elements_from_mesh.html" />
+    <link rel="prev" title="structure" href="../compas_fea.structure.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section class="detail" id="structure">
+<h1>Structure</h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="compas_fea.structure.Structure">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">compas_fea.structure.</span></span><span class="sig-name descname"><span class="pre">Structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'compas_fea-Structure'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/compas-dev/compas_fea/blob/master/src/compas_fea/structure/structure.py#L31"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectMixins</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ElementMixins</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">NodeMixins</span></code></p>
+<p>Initialises Structure object for use in finite element analysis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Path to save all compas_fea associated files.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Name of the structure.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>constraints</strong> (<em>dict</em>) – Constraint objects.</p></li>
+<li><p><strong>displacements</strong> (<em>dict</em>) – Displacement objects.</p></li>
+<li><p><strong>elements</strong> (<em>dict</em>) – Element objects.</p></li>
+<li><p><strong>element_index</strong> (<em>dict</em>) – Index of elements (element centroid geometric keys).</p></li>
+<li><p><strong>element_properties</strong> (<em>dict</em>) – ElementProperties objects.</p></li>
+<li><p><strong>interactions</strong> (<em>dict</em>) – Interaction objects.</p></li>
+<li><p><strong>loads</strong> (<em>dict</em>) – Load objects.</p></li>
+<li><p><strong>materials</strong> (<em>dict</em>) – Material objects.</p></li>
+<li><p><strong>misc</strong> (<em>dict</em>) – Misc objects.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Structure name.</p></li>
+<li><p><strong>nodes</strong> (<em>dict</em>) – Node objects.</p></li>
+<li><p><strong>node_index</strong> (<em>dict</em>) – Index of nodes (node geometric keys).</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – Path to save files.</p></li>
+<li><p><strong>results</strong> (<em>dict</em>) – Dictionary containing analysis results.</p></li>
+<li><p><strong>sections</strong> (<em>dict</em>) – Section objects.</p></li>
+<li><p><strong>sets</strong> (<em>dict</em>) – Set objects.</p></li>
+<li><p><strong>steps</strong> (<em>dict</em>) – Step objects.</p></li>
+<li><p><strong>steps_order</strong> (<em>list</em>) – Sorted list of Step object names.</p></li>
+<li><p><strong>tol</strong> (<em>str</em>) – Geometric key tolerance.</p></li>
+<li><p><strong>virtual_nodes</strong> (<em>dict</em>) – Node objects for virtual nodes.</p></li>
+<li><p><strong>virtual_elements</strong> (<em>dict</em>) – Element objects for virtual elements.</p></li>
+<li><p><strong>virtual_element_index</strong> (<em>dict</em>) – Index of virtual elements (element centroid geometric keys).</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_nodes_elements_from_mesh.html#compas_fea.structure.Structure.add_nodes_elements_from_mesh" title="compas_fea.structure.Structure.add_nodes_elements_from_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_nodes_elements_from_mesh</span></code></a></p></td>
+<td><p>Adds the nodes and faces of a Mesh to the Structure object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_nodes_elements_from_network.html#compas_fea.structure.Structure.add_nodes_elements_from_network" title="compas_fea.structure.Structure.add_nodes_elements_from_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_nodes_elements_from_network</span></code></a></p></td>
+<td><p>Adds the nodes and edges of a Network to the Structure object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_nodes_elements_from_volmesh.html#compas_fea.structure.Structure.add_nodes_elements_from_volmesh" title="compas_fea.structure.Structure.add_nodes_elements_from_volmesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_nodes_elements_from_volmesh</span></code></a></p></td>
+<td><p>Adds the nodes and cells of a VolMesh to the Structure object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_set.html#compas_fea.structure.Structure.add_set" title="compas_fea.structure.Structure.add_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_set</span></code></a></p></td>
+<td><p>Adds a node, element or surface set to structure.sets.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.analyse.html#compas_fea.structure.Structure.analyse" title="compas_fea.structure.Structure.analyse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">analyse</span></code></a></p></td>
+<td><p>Runs the analysis through the chosen FEA software / library.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.analyse_and_extract.html#compas_fea.structure.Structure.analyse_and_extract" title="compas_fea.structure.Structure.analyse_and_extract"><code class="xref py py-obj docutils literal notranslate"><span class="pre">analyse_and_extract</span></code></a></p></td>
+<td><p>Runs the analysis through the chosen FEA software / library and extracts data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.extract_data.html#compas_fea.structure.Structure.extract_data" title="compas_fea.structure.Structure.extract_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_data</span></code></a></p></td>
+<td><p>Extracts data from the analysis output files.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.get_element_results.html#compas_fea.structure.Structure.get_element_results" title="compas_fea.structure.Structure.get_element_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_element_results</span></code></a></p></td>
+<td><p>Extract element results from self.results.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.get_nodal_results.html#compas_fea.structure.Structure.get_nodal_results" title="compas_fea.structure.Structure.get_nodal_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_nodal_results</span></code></a></p></td>
+<td><p>Extract nodal results from self.results.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.load_from_obj.html#compas_fea.structure.Structure.load_from_obj" title="compas_fea.structure.Structure.load_from_obj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_from_obj</span></code></a></p></td>
+<td><p>Imports a Structure object from an .obj file through Pickle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.save_to_obj.html#compas_fea.structure.Structure.save_to_obj" title="compas_fea.structure.Structure.save_to_obj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_to_obj</span></code></a></p></td>
+<td><p>Exports the Structure object to an .obj file through Pickle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.scale_displacements.html#compas_fea.structure.Structure.scale_displacements" title="compas_fea.structure.Structure.scale_displacements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_displacements</span></code></a></p></td>
+<td><p>Scales displacements by a given factor.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.scale_loads.html#compas_fea.structure.Structure.scale_loads" title="compas_fea.structure.Structure.scale_loads"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_loads</span></code></a></p></td>
+<td><p>Scales loads by a given factor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.set_steps_order.html#compas_fea.structure.Structure.set_steps_order" title="compas_fea.structure.Structure.set_steps_order"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_steps_order</span></code></a></p></td>
+<td><p>Sets the order that the Steps will be analysed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.summary.html#compas_fea.structure.Structure.summary" title="compas_fea.structure.Structure.summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">summary</span></code></a></p></td>
+<td><p>Prints a summary of the Structure object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.view.html#compas_fea.structure.Structure.view" title="compas_fea.structure.Structure.view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">view</span></code></a></p></td>
+<td><p>Starts the PyQt app for visualisation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.write_input_file.html#compas_fea.structure.Structure.write_input_file" title="compas_fea.structure.Structure.write_input_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_input_file</span></code></a></p></td>
+<td><p>Writes the FE software's input file.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Inherited Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add.html#compas_fea.structure.Structure.add" title="compas_fea.structure.Structure.add"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add</span></code></a></p></td>
+<td><p>Adds object(s) to their correct attribute dictionary in the structure.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_constraint.html#compas_fea.structure.Structure.add_constraint" title="compas_fea.structure.Structure.add_constraint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_constraint</span></code></a></p></td>
+<td><p>Adds a Constraint object to structure.constraints.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_displacement.html#compas_fea.structure.Structure.add_displacement" title="compas_fea.structure.Structure.add_displacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_displacement</span></code></a></p></td>
+<td><p>Adds a Displacement object to structure.displacements.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_displacements.html#compas_fea.structure.Structure.add_displacements" title="compas_fea.structure.Structure.add_displacements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_displacements</span></code></a></p></td>
+<td><p>Adds Displacement objects to structure.displacements.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_element.html#compas_fea.structure.Structure.add_element" title="compas_fea.structure.Structure.add_element"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_element</span></code></a></p></td>
+<td><p>Adds an element to structure.elements with centroid geometric key.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_element_properties.html#compas_fea.structure.Structure.add_element_properties" title="compas_fea.structure.Structure.add_element_properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_element_properties</span></code></a></p></td>
+<td><p>Adds ElementProperties object(s) to structure.element_properties.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_element_to_element_index.html#compas_fea.structure.Structure.add_element_to_element_index" title="compas_fea.structure.Structure.add_element_to_element_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_element_to_element_index</span></code></a></p></td>
+<td><p>Adds the element to the element_index dictionary.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_elements.html#compas_fea.structure.Structure.add_elements" title="compas_fea.structure.Structure.add_elements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_elements</span></code></a></p></td>
+<td><p>Adds multiple elements of the same type to structure.elements.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_interaction.html#compas_fea.structure.Structure.add_interaction" title="compas_fea.structure.Structure.add_interaction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_interaction</span></code></a></p></td>
+<td><p>Adds an Interaction object to structure.interactions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_load.html#compas_fea.structure.Structure.add_load" title="compas_fea.structure.Structure.add_load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_load</span></code></a></p></td>
+<td><p>Adds a Load object to structure.loads.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_loads.html#compas_fea.structure.Structure.add_loads" title="compas_fea.structure.Structure.add_loads"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_loads</span></code></a></p></td>
+<td><p>Adds Load objects to structure.loads.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_material.html#compas_fea.structure.Structure.add_material" title="compas_fea.structure.Structure.add_material"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_material</span></code></a></p></td>
+<td><p>Adds a Material object to structure.materials.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_materials.html#compas_fea.structure.Structure.add_materials" title="compas_fea.structure.Structure.add_materials"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_materials</span></code></a></p></td>
+<td><p>Adds Material objects to structure.materials.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_misc.html#compas_fea.structure.Structure.add_misc" title="compas_fea.structure.Structure.add_misc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_misc</span></code></a></p></td>
+<td><p>Adds a Misc object to structure.misc.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_nodal_element.html#compas_fea.structure.Structure.add_nodal_element" title="compas_fea.structure.Structure.add_nodal_element"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_nodal_element</span></code></a></p></td>
+<td><p>Adds a nodal element to structure.elements with the possibility of adding a coincident virtual node.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_node.html#compas_fea.structure.Structure.add_node" title="compas_fea.structure.Structure.add_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_node</span></code></a></p></td>
+<td><p>Adds a node to structure.nodes at co-ordinates xyz with local frame [ex, ey, ez].</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_node_to_node_index.html#compas_fea.structure.Structure.add_node_to_node_index" title="compas_fea.structure.Structure.add_node_to_node_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_node_to_node_index</span></code></a></p></td>
+<td><p>Adds the node to the node_index dictionary.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_nodes.html#compas_fea.structure.Structure.add_nodes" title="compas_fea.structure.Structure.add_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_nodes</span></code></a></p></td>
+<td><p>Adds a list of nodes to structure.nodes at given co-ordinates all with local frame [ex, ey, ez].</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_section.html#compas_fea.structure.Structure.add_section" title="compas_fea.structure.Structure.add_section"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_section</span></code></a></p></td>
+<td><p>Adds a Section object to structure.sections.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_sections.html#compas_fea.structure.Structure.add_sections" title="compas_fea.structure.Structure.add_sections"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_sections</span></code></a></p></td>
+<td><p>Adds Section objects to structure.sections.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_step.html#compas_fea.structure.Structure.add_step" title="compas_fea.structure.Structure.add_step"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_step</span></code></a></p></td>
+<td><p>Adds a Step object to structure.steps.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_steps.html#compas_fea.structure.Structure.add_steps" title="compas_fea.structure.Structure.add_steps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_steps</span></code></a></p></td>
+<td><p>Adds Step objects to structure.steps.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.add_virtual_element.html#compas_fea.structure.Structure.add_virtual_element" title="compas_fea.structure.Structure.add_virtual_element"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_virtual_element</span></code></a></p></td>
+<td><p>Adds a virtual element to structure.elements and to element set 'virtual_elements'.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.assign_element_property.html#compas_fea.structure.Structure.assign_element_property" title="compas_fea.structure.Structure.assign_element_property"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assign_element_property</span></code></a></p></td>
+<td><p>Assign the ElementProperties object name to associated Elements.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.check_element_exists.html#compas_fea.structure.Structure.check_element_exists" title="compas_fea.structure.Structure.check_element_exists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_element_exists</span></code></a></p></td>
+<td><p>Check if an element already exists based on nodes or centroid.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.check_node_exists.html#compas_fea.structure.Structure.check_node_exists" title="compas_fea.structure.Structure.check_node_exists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_node_exists</span></code></a></p></td>
+<td><p>Check if a node already exists at given x, y, z co-ordinates.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.edit_element.html#compas_fea.structure.Structure.edit_element" title="compas_fea.structure.Structure.edit_element"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edit_element</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.edit_node.html#compas_fea.structure.Structure.edit_node" title="compas_fea.structure.Structure.edit_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edit_node</span></code></a></p></td>
+<td><p>Edit a node's data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.element_centroid.html#compas_fea.structure.Structure.element_centroid" title="compas_fea.structure.Structure.element_centroid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element_centroid</span></code></a></p></td>
+<td><p>Return the centroid of an element.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.element_count.html#compas_fea.structure.Structure.element_count" title="compas_fea.structure.Structure.element_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element_count</span></code></a></p></td>
+<td><p>Return the number of elements in the Structure.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.node_bounds.html#compas_fea.structure.Structure.node_bounds" title="compas_fea.structure.Structure.node_bounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_bounds</span></code></a></p></td>
+<td><p>Return the bounds formed by the Structure's nodal co-ordinates.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.node_count.html#compas_fea.structure.Structure.node_count" title="compas_fea.structure.Structure.node_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_count</span></code></a></p></td>
+<td><p>Return the number of nodes in the Structure.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="compas_fea.structure.Structure.node_xyz.html#compas_fea.structure.Structure.node_xyz" title="compas_fea.structure.Structure.node_xyz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_xyz</span></code></a></p></td>
+<td><p>Return the xyz co-ordinates of a node.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compas_fea.structure.Structure.nodes_xyz.html#compas_fea.structure.Structure.nodes_xyz" title="compas_fea.structure.Structure.nodes_xyz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes_xyz</span></code></a></p></td>
+<td><p>Return the xyz co-ordinates of given or all nodes.</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">COMPAS FEA</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../compas_fea.html">compas_fea</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../../api.html">API Reference</a><ul>
+  <li><a href="../compas_fea.html">compas_fea</a><ul>
+  <li><a href="../compas_fea.structure.html">structure</a><ul>
+      <li>Previous: <a href="../compas_fea.structure.html" title="previous chapter">structure</a></li>
+      <li>Next: <a href="compas_fea.structure.Structure.add_nodes_elements_from_mesh.html" title="next chapter">Structure.add_nodes_elements_from_mesh</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;Block Research Group - ETH Zurich.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

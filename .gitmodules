@@ -1,0 +1,6 @@
+[submodule "compas_fea"]
+	path = compas_fea
+	url = git@github.com:StrucEng-Library-kfmresearch/compas_fea.git
+[submodule "sphinx"]
+	path = sphinx
+	url = https://github.com/sphinx-doc/sphinx.git
