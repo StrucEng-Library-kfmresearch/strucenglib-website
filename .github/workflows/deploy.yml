@@ -34,6 +34,7 @@ jobs:
          chmod 777 -R ./site
          cd site
          ls -al
+         cd ../
          
          
       - name: git-compas
