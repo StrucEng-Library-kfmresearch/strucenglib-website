@@ -24,9 +24,9 @@ jobs:
           git checkout docs/compas
           ls -al
           cd ../
-          mkdir -p dist/docs
-          cp -rf compas/docs dist/docs/
-          ls -al dist/docs/docs/
+          mkdir -p site/docs
+          cp -rf compas/docs site/docs/
+          ls -al site/docs/docs/
 
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
@@ -41,5 +41,5 @@ jobs:
       - name: check
         run: |   
          ls -al
-         cd dist
+         cd site
          ls -al
