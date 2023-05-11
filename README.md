@@ -1,6 +1,6 @@
-# compas API documentation
+# Compas API Documentation
 
-This branch hosts the API documentation of the version compas_fea used in struc eng library.
+This branch hosts the API documentation of the version of compas used in struc eng library.
 We commit a built snapshot in the repository.
 
 To rebuild the documentation:
