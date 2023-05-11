@@ -31,8 +31,10 @@ jobs:
       - name: check
         run: |   
          ls -al
+         chmod 777 -R ./site
          cd site
          ls -al
+         
          
       - name: git-compas
         run: |
