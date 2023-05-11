@@ -17,7 +17,7 @@ jobs:
       - name: Checkout main
         uses: actions/checkout@v2
         
-      - name: git
+      - name: git-compas
         run: |
           git clone https://github.com/StrucEng-Library-kfmresearch/strucenglib-website.git compas
           cd compas
@@ -26,6 +26,17 @@ jobs:
           cd ../
           mkdir -p site/docs
           cp -rf compas/docs site/docs/
+          ls -al site/docs/docs/
+           - name: git-compas
+      - name: git-compas-fea
+        run: |
+          git clone https://github.com/StrucEng-Library-kfmresearch/strucenglib-website.git compas_fea
+          cd compas
+          git checkout docs/compas_fea
+          ls -al
+          cd ../
+          mkdir -p site/docs
+          cp -rf compas_fea/docs site/docs/
           ls -al site/docs/docs/
 
       - name: Deploy docs
