@@ -16,28 +16,7 @@ jobs:
     steps:
       - name: Checkout main
         uses: actions/checkout@v2
-        
-      - name: git-compas
-        run: |
-          git clone https://github.com/StrucEng-Library-kfmresearch/strucenglib-website.git compas
-          cd compas
-          git checkout docs/compas
-          ls -al
-          cd ../
-          mkdir -p site/docs
-          cp -rf compas/docs site/docs/
-          ls -al site/docs/docs/
-
-      - name: git-compas-fea
-        run: |
-          git clone https://github.com/StrucEng-Library-kfmresearch/strucenglib-website.git compas_fea
-          cd compas
-          git checkout docs/compas_fea
-          ls -al
-          cd ../
-          mkdir -p site/docs
-          cp -rf compas_fea/docs site/docs/
-          ls -al site/docs/docs/
+    
 
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
@@ -54,3 +33,25 @@ jobs:
          ls -al
          cd site
          ls -al
+         
+      - name: git-compas
+        run: |
+          git clone https://github.com/StrucEng-Library-kfmresearch/strucenglib-website.git compas
+          cd compas
+          git checkout docs/compas
+          ls -al
+          cd ../
+          mkdir -p site/docs
+          cp -rf compas/docs site/docs/
+          ls -al site/docs
+
+      - name: git-compas-fea
+        run: |
+          git clone https://github.com/StrucEng-Library-kfmresearch/strucenglib-website.git compas_fea
+          cd compas_fea
+          git checkout docs/compas_fea
+          ls -al
+          cd ../
+          mkdir -p site/docs
+          cp -rf compas_fea/docs site/docs/
+          ls -al site/docs
