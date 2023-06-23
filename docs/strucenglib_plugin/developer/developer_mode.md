@@ -18,9 +18,11 @@ The following table lists the available Python dependencies along with their res
 ## Install Development Dependencies
 To enable the developer mode, you can clone one or all of the Python dependencies mentioned above. For example:
 
+
 ```sh
 git clone https://github.com/StrucEng-Library-kfmresearch/strucenglib-snippets.git
 ```
+
 In the `StrucEngLibInstallDependencies` dialog in Rhino 3D, select the location of the cloned git repository on your disk. Then, press the _Install Dependencies_ button.
 The installer will link your git repository to the virtual environment.
 This ensures that any changes made in the git repository are reflected in the Python virtual environment within Rhino 3D.
@@ -36,6 +38,8 @@ In the screenshot above, you can observe that all Rhino 3D script links refer to
 
 ### Remarks
 Once you have set up the git development dependencies, you should no longer link other directories in Rhino's Module Search Paths, as illustrated below:
+
+
 ![image](https://github.com/StrucEng-Library-kfmresearch/strucenglib-website/assets/2311941/178e20a7-ffcb-4db3-a520-072021fa3852)
 
 
