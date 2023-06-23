@@ -8,8 +8,8 @@ In the `StrucEngLibInstallDependencies` dialog, a new section called _Developer_
 The developer mode allows you to install local git repositories into the Python virtual environment. This feature enables you to modify and test Python dependencies without requiring a new version release.
 
 The following table lists the available Python dependencies along with their respective repository links:
-
-
+  
+  
 | Name                           	| Repository                                                              	|
 |--------------------------------	|-------------------------------------------------------------------------	|
 | Strucenglib Snippet Collection 	| https://github.com/StrucEng-Library-kfmresearch/strucenglib-snippets.git  |
