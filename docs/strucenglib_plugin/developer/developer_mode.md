@@ -1,4 +1,4 @@
-# Rhino 3D Developer Mode
+# Python Developer Mode
 Starting from version 0.0.21, the strucenglib Rhino 3D plugin includes a developer mode specifically designed to develop and test Python dependencies.
 
 In the `StrucEngLibInstallDependencies` dialog, a new section called _Developer_ has been introduced:
