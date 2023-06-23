@@ -95,7 +95,7 @@ nav:
       - Developer:
           Documentation: strucenglib_plugin/developer/developer.md
           Python Developer Mode: strucenglib_plugin/developer/python_developer_mode.md
-          Changelog: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/blob/master/CHANGELOG
+          Changelog: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin/blob/master/CHANGELOG.md
           Source Code: https://github.com/StrucEng-Library-kfmresearch/strucenglib-rhino3d-plugin
   - 'StrucEng Library Snippets':
       - Home: strucenglib_snippets/home.md  
