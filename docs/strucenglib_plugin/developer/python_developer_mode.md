@@ -8,12 +8,15 @@ In the `StrucEngLibInstallDependencies` dialog, a new section called _Developer_
 The developer mode allows you to install local git repositories into the Python virtual environment. This feature enables you to modify and test Python dependencies without requiring a new version release.
 
 The following table lists the available Python dependencies along with their respective repository links:
+
+
 | Name                           	| Repository                                                              	|
 |--------------------------------	|-------------------------------------------------------------------------	|
-| Strucenglib Snippet Collection 	| https://github.com/StrucEng-Library-kfmresearch/strucenglib-snippets.git   	|
+| Strucenglib Snippet Collection 	| https://github.com/StrucEng-Library-kfmresearch/strucenglib-snippets.git  |
 | Strucenglib Connection Layer   	| https://github.com/StrucEng-Library-kfmresearch/strucenglib-connect.git 	|
 | Strucenglib Compas Fork        	| https://github.com/StrucEng-Library-kfmresearch/compas.git              	|
 | Strucenglib Compas FEA1 Fork   	| https://github.com/StrucEng-Library-kfmresearch/compas_fea.git          	|
+
 
 ## Install Development Dependencies
 To enable the developer mode, you can clone one or all of the Python dependencies mentioned above. For example:
@@ -27,8 +30,10 @@ In the `StrucEngLibInstallDependencies` dialog in Rhino 3D, select the location 
 The installer will link your git repository to the virtual environment.
 This ensures that any changes made in the git repository are reflected in the Python virtual environment within Rhino 3D.
 
+
 !!! note
     - The installer functions as a shorthand for the pip command: pip install -e "location of git repository"
+
 
 You can verify the target location of the symbolic links in the Rhino scripts directory by clicking on _Rhino Scripts Directory_.
 
