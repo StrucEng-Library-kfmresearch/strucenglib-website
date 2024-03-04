@@ -122,7 +122,7 @@ nav:
           - Example 1: strucenglib_snippets/examples/all_functionalities.md
           
           
-  - 'Patches for Compas FEA':
+  - 'Dev Guide':
       - Home: compas_fea/home.md 
       - Basics: compas_fea/basics.md   
       - Structure: compas_fea/structure.md   
