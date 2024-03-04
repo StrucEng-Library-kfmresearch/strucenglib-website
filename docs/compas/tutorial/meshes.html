@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Meshes &#8212; COMPAS 1.16.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Vol(umetric) Meshes" href="volmeshes.html" />
+    <link rel="prev" title="Networks" href="networks.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="meshes">
+<h1>Meshes</h1>
+<p class="lead">Meshes are everywhere in geometry processing, computer graphics,
+additive manufacturing processes, Finite Element Analysis etc.
+COMPAS meshes are polygon meshes with support for n-sided polygonal faces.
+They can represent manifold, open or closed, polygonal surfaces.</p>
+<section id="data-structure">
+<h2>Data structure</h2>
+<p>In COMPAS meshes are presented using a half-edge data structure. In a
+half-edge data structure, each edge is composed of two half-edges with
+opposite orientation. Each half-edge is part of exactly one face, unless
+it is on the boundary. An edge is thus incident to at least one face and
+at most to two. The half-edges of a face form a continuous cycle,
+connecting the vertices of the face in a specific order forming a closed
+n-sided polygon. The ordering of the vertices determines the direction
+of its normal.</p>
+</section>
+<section id="building-a-mesh">
+<h2>Building a Mesh</h2>
+<p>Meshes can be built from scratch by adding vertices and faces.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">compas.datastructures</span> <span class="kn">import</span> <span class="n">Mesh</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">add_vertex</span><span class="p">()</span>  <span class="c1"># x,y,z coordinates are optional and default to 0,0,0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">add_vertex</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">add_vertex</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">add_vertex</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">add_face</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="constructors">
+<h2>Constructors</h2>
+<p>Building a mesh vertex per vertex and face per face is fine for very simple meshes,
+but quickly becomes tedious for meshes of relevant size.
+Alternative constructors can be used to simplify this process based on specific inputs.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="o">.</span><span class="n">from_vertices_and_faces</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="o">.</span><span class="n">from_polygons</span><span class="p">(</span><span class="n">polygons</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="o">.</span><span class="n">from_shape</span><span class="p">(</span><span class="n">box</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For strictly two-dimensional inputs in the XY plane, the following can also be used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="o">.</span><span class="n">from_lines</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="o">.</span><span class="n">from_points</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">from_lines</span></code> uses a wall-follower to find the faces of the connected lines.
+This process is only successful if the input lines form a planar graph.
+<code class="docutils literal notranslate"><span class="pre">from_points</span></code> generates a delaunay triangulation of the provided points in the XY plane.</p>
+<p>For every <code class="docutils literal notranslate"><span class="pre">from_</span></code> function there is a corresponding <code class="docutils literal notranslate"><span class="pre">to_</span></code> function that basically accomplishes the exact opposite.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="geometry-formats">
+<h2>Geometry Formats</h2>
+<p>The mesh also supports constructors based on common geometry formats for 3D polygon mesh geometry.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="o">.</span><span class="n">from_obj</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="o">.</span><span class="n">from_off</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="o">.</span><span class="n">from_ply</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="o">.</span><span class="n">from_stl</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As mentioned above, for every <code class="docutils literal notranslate"><span class="pre">from_</span></code> there is a <code class="docutils literal notranslate"><span class="pre">to_</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="o">.</span><span class="n">from_obj</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="o">.</span><span class="n">from_off</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="o">.</span><span class="n">from_ply</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="o">.</span><span class="n">from_stl</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="vertices-faces-edges">
+<h2>Vertices, Faces, Edges</h2>
+<p>To access the vertices, faces, and edges of the mesh data structure, use the corresponding methods.
+Note that these methods return generator objects that have to be consumed by iteration.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">vertices</span><span class="p">()</span>
+<span class="go">&lt;generator object HalfEdge.vertices at 0x7fe3cb20f4a0&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">faces</span><span class="p">()</span>
+<span class="go">&lt;generator object HalfEdge.faces at 0x7fe3cb20f4a0&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span>
+<span class="go">&lt;generator object HalfEdge.edges at 0x7fe3cb20f510&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">vertex</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">vertices</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">vertex</span><span class="p">)</span>
+<span class="gp">...</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">face</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">faces</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">face</span><span class="p">)</span>
+<span class="gp">...</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">edges</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<p>To obtain actual lists of components, the results from the accessor functions have to be converted explicitly.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vertices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">vertices</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">edges</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">faces</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">faces</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>The items returned by the accessor methods are identifiers that are unique in the context of the particular component.
+Identifiers of vertices and faces are positive integers, including zero.
+Identifiers of edges are pairs of vertex ids in the form of a tuple.</p>
+<p>Note that adding and removing elements will not cause identifiers to be renumbered.
+Therefore, after certain topological operations (e.g. subdivision), vertex and face identifiers no longer necessarily form contiguous sequences.
+This needs to be taken into account when converting sequences of vertices, faces, and edges to lists, for example for numerical calculation.
+To transparently convert non-contiguous sequences of identifiers to contiguous list indices, use “key/index maps”.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">key_index</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">key_index</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vertices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">vertices</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">edges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">key_index</span><span class="p">[</span><span class="n">u</span><span class="p">],</span> <span class="n">key_index</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">edges</span><span class="p">()]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">faces</span> <span class="o">=</span> <span class="p">[[</span><span class="n">key_index</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">face_vertices</span><span class="p">(</span><span class="n">face</span><span class="p">)]</span> <span class="k">for</span> <span class="n">face</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">faces</span><span class="p">()]</span>
+</pre></div>
+</div>
+<p>The key/index map simply maps vertex identifiers to the corresponding index in the contiguous sequence that is created
+when converting a sequence of identifiers to a list. The ordering of these identifiers can be completely random, but is always consistent.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">key_index</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">index</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">vertices</span><span class="p">())}</span>
+</pre></div>
+</div>
+</section>
+<section id="topology">
+<h2>Topology</h2>
+<p>Through its half-edge data structure, a mesh can answer several topological questions
+about itself and its components.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">vertex_neighbors</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="n">ordered</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">vertex_degree</span><span class="p">(</span><span class="n">vertex</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">vertex_faces</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="n">ordered</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">vertex_neigborhood</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="n">ring</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">vertex_edges</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">face_vertices</span><span class="p">(</span><span class="n">face</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">face_halfedges</span><span class="p">(</span><span class="n">face</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">face_neighbors</span><span class="p">(</span><span class="n">face</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">face_degree</span><span class="p">(</span><span class="n">face</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">halfedge_adjacent_face</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">halfedge_opposite_face</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">halfedge_next</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">halfedge_prev</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="geometry">
+<h2>Geometry</h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">vertex_coordinates</span><span class="p">(</span><span class="n">vertex</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">vertex_normal</span><span class="p">(</span><span class="n">vertex</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">vertex_laplacian</span><span class="p">(</span><span class="n">vertex</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">face_centroid</span><span class="p">(</span><span class="n">face</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">face_normal</span><span class="p">(</span><span class="n">face</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">face_plane</span><span class="p">(</span><span class="n">face</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">face_frame</span><span class="p">(</span><span class="n">face</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">face_area</span><span class="p">(</span><span class="n">face</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">edge_length</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">edge_vector</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">edge_direction</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">edge_midpoint</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">edge_point</span><span class="p">(</span><span class="n">edge</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="attributes">
+<h2>Attributes</h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">vertex_attribute</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">vertex_attributes</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="s1">&#39;xyz&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">vertices_attribute</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">vertices_attributes</span><span class="p">(</span><span class="s1">&#39;xyz&#39;</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">edge_attribute</span><span class="p">(</span><span class="n">edge</span><span class="p">,</span> <span class="s1">&#39;force&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">edges_attribute</span><span class="p">(</span><span class="n">edge</span><span class="p">,</span> <span class="s1">&#39;force&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="selections">
+<h2>Selections</h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">vertices_where</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)})</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">vertices_where</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">vertices_where</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="serialization">
+<h2>Serialization</h2>
+</section>
+<section id="algorithms">
+<h2>Algorithms</h2>
+</section>
+<section id="plugins">
+<h2>Plugins</h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">COMPAS</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.html">Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="networks.html">Networks</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Meshes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="volmeshes.html">Vol(umetric) Meshes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robots.html">Robots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numericaldata.html">Numerical Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpc.html">Remote Procedure Calls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geomaps.html">Geometric Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotters.html">Plotters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="colors.html">Colors and Color Maps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins.html">Extension points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devguide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases.html">Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citing.html">Citing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../tutorial.html">Tutorial</a><ul>
+      <li>Previous: <a href="networks.html" title="previous chapter">Networks</a></li>
+      <li>Next: <a href="volmeshes.html" title="next chapter">Vol(umetric) Meshes</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;Block Research Group - ETH Zurich.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

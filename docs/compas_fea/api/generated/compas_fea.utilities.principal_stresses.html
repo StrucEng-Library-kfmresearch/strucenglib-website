@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>principal_stresses &#8212; COMPAS FEA 0.3.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="process_data" href="compas_fea.utilities.process_data.html" />
+    <link rel="prev" title="normalise_data" href="compas_fea.utilities.normalise_data.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section class="detail" id="principal-stresses">
+<h1>principal_stresses</h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="compas_fea.utilities.principal_stresses">
+<span class="sig-prename descclassname"><span class="pre">compas_fea.utilities.</span></span><span class="sig-name descname"><span class="pre">principal_stresses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/compas-dev/compas_fea/blob/master/src/compas_fea/utilities/functions.py#L579"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Performs principal stress calculations solving the eigenvalues problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>dic</em>) – Element data from structure.results for the Step.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>spr</strong> (<em>dict</em>) – dictionary with the principal stresses of each element organised per
+<cite>stress_type</cite> (‘max’, ‘min’) and <cite>section_point</cite> (‘sp1, ‘sp5’).
+{section_point: {stress_type: array([element_0, elemnt_1, …])}}</p></li>
+<li><p><strong>e</strong> (<em>dict</em>) – dictionary with the principal stresses vector components in World coordinates
+of each element organised per <cite>stress_type</cite> (‘max’, ‘min’) and
+<cite>section_point</cite> (‘sp1, ‘sp5’).
+{section_point: {stress_type: array([element_0_x, elemnt_1_x, …],
+[element_0_y, elemnt_1_y, …])}}</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The function is experimental and works only for shell elements at the moment.</p>
+</div>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">COMPAS FEA</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../compas_fea.html">compas_fea</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../../api.html">API Reference</a><ul>
+  <li><a href="../compas_fea.html">compas_fea</a><ul>
+  <li><a href="../compas_fea.utilities.html">utilities</a><ul>
+      <li>Previous: <a href="compas_fea.utilities.normalise_data.html" title="previous chapter">normalise_data</a></li>
+      <li>Next: <a href="compas_fea.utilities.process_data.html" title="next chapter">process_data</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;Block Research Group - ETH Zurich.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

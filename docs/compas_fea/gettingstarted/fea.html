@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>FE software &#8212; COMPAS FEA 0.3.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tutorial" href="../tutorial.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="fe-software">
+<span id="fea"></span><h1>FE software</h1>
+<p><code class="docutils literal notranslate"><span class="pre">compas_fea</span></code> use FEA Software in the background to run the analyses.
+Currently the following backends are supported to various degrees:</p>
+<ul class="simple">
+<li><p>Abaqus: …</p></li>
+<li><p>ANSYS: …</p></li>
+<li><p>OpenSEES: …</p></li>
+</ul>
+<section id="abaqus">
+<h2>Abaqus</h2>
+<p>Most support with the <strong>compas_fea</strong> package is for the finite element software <a class="reference external" href="https://www.3ds.com/products-services/simulia/products/abaqus/">Abaqus</a> by <a class="reference external" href="https://www.3ds.com/products-services/simulia/">SIMULIA</a> of <a class="reference external" href="https://www.3ds.com/en-uk/">Dassault Systemes</a>. Development of the <strong>compas_fea</strong> package has been for version 6.14 (2014) and has not yet been verified to work for the newer 201x releases. As this software is generally used by academia, licensing is usually through a university network academic license. Licenses that require the computer to be connected to the same network as the license server will require the host to be connected through a Virtual Private Network (VPN) if they are off-site, through a client such as <a class="reference external" href="https://www.cisco.com/c/en/us/products/security/anyconnect-secure-mobility-client/index.html">Cisco AnyConnect</a> or <a class="reference external" href="https://openvpn.net/get-open-vpn/">OpenVPN</a>. The Abaqus documentation does not need to be installed for the <strong>compas_fea</strong> package to run, but is a useful reference. On installation, Abaqus requires a temporary directory to be nominated for saving many different files during analysis, including the most important output database <strong>.odb</strong> file and various useful log files. Generally this folder will be <strong>C:/Temp/</strong> on Windows or <strong>~/Temp</strong> on Linux, but a different folder location may be defined at the start of any <strong>compas_fea</strong> script or through the <strong>structure.path</strong> attribute of the <strong>Structure</strong> object (this is described later).</p>
+<p>During installation, Abaqus will register its core executables to the <strong>PATH</strong> for Windows systems, which can be confirmed by opening the program with its graphical interface by typing <code class="docutils literal notranslate"><span class="pre">abaqus</span> <span class="pre">cae</span></code> in a <code class="docutils literal notranslate"><span class="pre">cmd</span></code> terminal. Linux users may wish to define similar aliases manually with the following in their home <strong>.bashrc</strong> or <strong>.profile</strong> files.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span><span class="w"> </span><span class="nv">abaqus_cae</span><span class="o">=</span><span class="s2">&quot;XLIB_SKIP_ARGB_VISUALS=1 /path/to/abaqus/Commands/abaqus cae -mesa&quot;</span>
+<span class="nb">alias</span><span class="w"> </span><span class="nv">abaqus</span><span class="o">=</span><span class="s2">&quot;/path/to/abaqus/Commands/abaqus&quot;</span>
+</pre></div>
+</div>
+<p>Having these aliases set will make the use of the <strong>compas_fea</strong> package easier as the Abaqus executable can be loaded conveniently, although the Abaqus executable path can also be manually given at the time of analysis. When called for an analysis, Abaqus is run in the background as a sub-process to analyse a model, with feedback presented to the user in the active terminal.</p>
+<p>There is no official support for Abaqus with MacOS, and so Mac users will need to use a Virtual Machine such as <a class="reference external" href="http://www.parallels.com/">Parallels</a>, <a class="reference external" href="https://www.virtualbox.org/">VirtualBox</a> or <a class="reference external" href="https://www.vmware.com/products/workstation.html">VMWare Workstation</a>, and use a Windows or Linux operating system.</p>
+</section>
+<section id="ansys">
+<h2>ANSYS</h2>
+<p>Support for ANSYS finite element software is in development and is currently only available for Windows.
+To be able to use ANSYS as a backend, make sure it is available on the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> variable.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;C:\Program Files\ANSYS Inc\v195\ansys\bin\winx64&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="opensees">
+<h2>OpenSees</h2>
+<p>The open-source finite element library <a class="reference external" href="http://opensees.berkeley.edu/wiki/index.php/OpenSees_User">OpenSees</a> by the Pacific Earthquake Engineering (PEER) Centre, has cross-platform support and is in active development. The functionality is current behind that of Abaqus but growing (please contact us if you would like to contribute). OpenSees is much leaner than larger software such as Abaqus and Ansys in terms of its file size and resources usage, which leads to a much faster analysis and results extraction time, but has generally much less functionality.</p>
+<p>For Windows, the necessary executable files for installation and running OpenSees can be found on the official <a class="reference external" href="http://opensees.berkeley.edu/OpenSees/user/download.php">Download</a> page for registered users (registration is free), for which the current tested version is 3.0.3. Once the required <strong>Tcl</strong> programming language has been installed, the <code class="docutils literal notranslate"><span class="pre">OpenSees.exe</span></code> should ideally be saved to <code class="docutils literal notranslate"><span class="pre">C:/OpenSees.exe</span></code> for the <strong>compas_fea</strong> package to pick-up its location easily. It can be stored in a different location if preferred, but this location will need to be given for each analysis so that <strong>compas_fea</strong> knows where to look.</p>
+<p>For Linux variants, make sure the <strong>Tcl</strong> programming language is installed on the system, this is often the case by default. The OpenSees source code may be downloaded via <a class="reference external" href="http://opensees.berkeley.edu/OpenSees/developer/svn.php">here</a> with build instruction at the <a class="reference external" href="http://opensees.berkeley.edu/OpenSees/developer/builds.php">builds</a> page. The download includes a variety of template <code class="docutils literal notranslate"><span class="pre">Makefile.def</span></code> files, which should be read carefully to set-up OpenSees for your specific system. Alternatively, OpenSees packages may already be available for your Linux distribution through its default package manager, such as with <a class="reference external" href="https://aur.archlinux.org/packages/opensees/">archlinux</a>. The location of where the OpenSees program has been built to, will need to be given for each analysis, a suggested location would be <code class="docutils literal notranslate"><span class="pre">~/opensees/</span></code>.</p>
+<p>An OpenSees executable for Apple Machines with Intel processors running OS 10.4 or above is also available, making OpenSees the only currently supported FE solver for Mac computers.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">COMPAS FEA</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../gettingstarted.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">FE software</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../gettingstarted.html">Getting Started</a><ul>
+      <li>Previous: <a href="installation.html" title="previous chapter">Installation</a></li>
+      <li>Next: <a href="../tutorial.html" title="next chapter">Tutorial</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;Block Research Group - ETH Zurich.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

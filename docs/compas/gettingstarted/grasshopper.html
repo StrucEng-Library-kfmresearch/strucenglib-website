@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Grasshopper &#8212; COMPAS 1.16.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Blender" href="blender.html" />
+    <link rel="prev" title="Rhino (Windows and Mac)" href="rhino.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="grasshopper">
+<span id="gs-grasshopper"></span><h1>Grasshopper</h1>
+<p>To get COMPAS working in Grasshopper, you first have to install COMPAS for Rhino.
+In Grasshopper, COMPAS is imported from within a GhPython component. Rhino for
+Mac and Rhino 6+ all come with their own GhPython interpreter, but if you use
+Rhino 5 on Windows, please download and install GhPython <a class="reference external" href="https://www.food4rhino.com/app/ghpython">here</a>.</p>
+<section id="verify-setup">
+<h2>Verify setup</h2>
+<p>To verify that everything is working properly, simply create a GhPython
+component on your Grasshopper canvas, paste the following script and hit <cite>OK</cite>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">compas</span>
+<span class="kn">from</span> <span class="nn">compas.datastructures</span> <span class="kn">import</span> <span class="n">Mesh</span>
+<span class="kn">from</span> <span class="nn">compas_ghpython.artists</span> <span class="kn">import</span> <span class="n">MeshArtist</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="o">.</span><span class="n">from_obj</span><span class="p">(</span><span class="n">compas</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;faces.obj&#39;</span><span class="p">))</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">MeshArtist</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="figure align-default">
+<img alt="../_images/gh_verify.jpg" class="figure-img img-fluid" src="../_images/gh_verify.jpg" />
+</figure>
+</section>
+<section id="grasshopper-components-for-compas">
+<h2>Grasshopper components for COMPAS</h2>
+<p>When COMPAS for Rhino is installed, it also installs Grasshopper components for
+COMPAS.  For example, the current environment information can be retrieved with
+the INFO component.</p>
+<figure class="figure align-default">
+<img alt="../_images/ghpython_component.jpg" class="figure-img img-fluid" src="../_images/ghpython_component.jpg" />
+</figure>
+</section>
+<section id="reloading-changed-libraries">
+<h2>Reloading changed libraries</h2>
+<p>If you change a Python library during a running Rhino application, which is
+imported in a GhPython component (e.g. via <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">compas_fab</span></code>),
+it is necessary to reload the library so that the GhPython interpreter
+recognizes the changes. To avoid restarting Rhino, you can use the function
+<code class="docutils literal notranslate"><span class="pre">unload_modules</span></code>. The following example reloads the library <code class="docutils literal notranslate"><span class="pre">compas_fab</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">compas_ghpython</span> <span class="kn">import</span> <span class="n">unload_modules</span>
+
+<span class="n">unload_modules</span><span class="p">(</span><span class="s1">&#39;compas_fab&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Prefer using <cite>unload_modules</cite> as early as possible in your grasshopper
+workflow. Re-loading modules later might result, for example,
+in COMPAS not being able to find an <cite>Artist</cite> as well as other issues
+related to a mid-workflow re-definition of Python types.</p>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">COMPAS</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../gettingstarted.html">Getting started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="vscode.html">Visual Studio Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rhino.html">Rhino (Windows and Mac)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Grasshopper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blender.html">Blender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rhino5.html">Rhino 5 on Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins.html">Extension points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devguide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases.html">Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citing.html">Citing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../gettingstarted.html">Getting started</a><ul>
+      <li>Previous: <a href="rhino.html" title="previous chapter">Rhino (Windows and Mac)</a></li>
+      <li>Next: <a href="blender.html" title="next chapter">Blender</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;Block Research Group - ETH Zurich.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

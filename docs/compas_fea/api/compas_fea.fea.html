@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>fea &#8212; COMPAS FEA 0.3.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Writer" href="generated/compas_fea.fea.Writer.html" />
+    <link rel="prev" title="cad" href="compas_fea.cad.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <span class="target" id="module-compas_fea.fea"></span><section id="fea">
+<h1>fea</h1>
+<p>The compas_fea package supports Abaqus, Ansys, Sofistik and OpenSees as analysis backends.</p>
+<section id="classes">
+<h2>Classes</h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/compas_fea.fea.Writer.html#compas_fea.fea.Writer" title="compas_fea.fea.Writer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Writer</span></code></a>(structure, software, filename, fields)</p></td>
+<td><p>Initialises base file writer.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="backends">
+<h2>Backends</h2>
+<section id="abaq">
+<h3>abaq</h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/compas_fea.fea.abaq.input_generate.html#compas_fea.fea.abaq.input_generate" title="compas_fea.fea.abaq.input_generate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">input_generate</span></code></a>(structure, fields, output)</p></td>
+<td><p>Creates the Abaqus .inp file from the Structure object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/compas_fea.fea.abaq.extract_data.html#compas_fea.fea.abaq.extract_data" title="compas_fea.fea.abaq.extract_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_data</span></code></a>(structure, fields, exe, output, ...)</p></td>
+<td><p>Extract data from the Abaqus .odb file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/compas_fea.fea.abaq.launch_process.html#compas_fea.fea.abaq.launch_process" title="compas_fea.fea.abaq.launch_process"><code class="xref py py-obj docutils literal notranslate"><span class="pre">launch_process</span></code></a>(structure, exe, cpus, output)</p></td>
+<td><p>Runs the analysis through Abaqus.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ansys">
+<h3>ansys</h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/compas_fea.fea.ansys.input_generate.html#compas_fea.fea.ansys.input_generate" title="compas_fea.fea.ansys.input_generate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">input_generate</span></code></a>(structure)</p></td>
+<td><p>Generates Ansys input file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/compas_fea.fea.ansys.make_command_file_static.html#compas_fea.fea.ansys.make_command_file_static" title="compas_fea.fea.ansys.make_command_file_static"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_command_file_static</span></code></a>(structure, path, name)</p></td>
+<td><p>Generates Ansys input file for static analysis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/compas_fea.fea.ansys.make_command_file_modal.html#compas_fea.fea.ansys.make_command_file_modal" title="compas_fea.fea.ansys.make_command_file_modal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_command_file_modal</span></code></a>(structure, path, name)</p></td>
+<td><p>Generates Ansys input file for modal analysis.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/compas_fea.fea.ansys.make_command_file_harmonic.html#compas_fea.fea.ansys.make_command_file_harmonic" title="compas_fea.fea.ansys.make_command_file_harmonic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_command_file_harmonic</span></code></a>(structure, ...)</p></td>
+<td><p>Generates Ansys input file for harmonic analysis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/compas_fea.fea.ansys.ansys_launch_process.html#compas_fea.fea.ansys.ansys_launch_process" title="compas_fea.fea.ansys.ansys_launch_process"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ansys_launch_process</span></code></a>(path, name[, cpus, ...])</p></td>
+<td><p>Launches an analysis using Ansys.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/compas_fea.fea.ansys.ansys_launch_process_extract.html#compas_fea.fea.ansys.ansys_launch_process_extract" title="compas_fea.fea.ansys.ansys_launch_process_extract"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ansys_launch_process_extract</span></code></a>(path, name[, ...])</p></td>
+<td><p>Calls an extraction of results from Ansys.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/compas_fea.fea.ansys.delete_result_files.html#compas_fea.fea.ansys.delete_result_files" title="compas_fea.fea.ansys.delete_result_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_result_files</span></code></a>(path, name)</p></td>
+<td><p>Deletes Ansys result files.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/compas_fea.fea.ansys.extract_rst_data.html#compas_fea.fea.ansys.extract_rst_data" title="compas_fea.fea.ansys.extract_rst_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_rst_data</span></code></a>(structure[, fields, steps, ...])</p></td>
+<td><p>Extracts results from Ansys rst file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/compas_fea.fea.ansys.write_results_from_rst.html#compas_fea.fea.ansys.write_results_from_rst" title="compas_fea.fea.ansys.write_results_from_rst"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_results_from_rst</span></code></a>(structure, fields, steps)</p></td>
+<td><p>Writes results request file from Ansys.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/compas_fea.fea.ansys.load_to_results.html#compas_fea.fea.ansys.load_to_results" title="compas_fea.fea.ansys.load_to_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_to_results</span></code></a>(structure, fields, steps)</p></td>
+<td><p>Loads results from Ansys txt files to Structure object.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="opensees">
+<h3>opensees</h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/compas_fea.fea.opensees.input_generate.html#compas_fea.fea.opensees.input_generate" title="compas_fea.fea.opensees.input_generate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">input_generate</span></code></a>(structure, fields, output, ndof)</p></td>
+<td><p>Creates the OpenSees .tcl file from the Structure object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/compas_fea.fea.opensees.extract_data.html#compas_fea.fea.opensees.extract_data" title="compas_fea.fea.opensees.extract_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_data</span></code></a>(structure, fields)</p></td>
+<td><p>Extract data from the OpenSees .out files.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/compas_fea.fea.opensees.launch_process.html#compas_fea.fea.opensees.launch_process" title="compas_fea.fea.opensees.launch_process"><code class="xref py py-obj docutils literal notranslate"><span class="pre">launch_process</span></code></a>(structure, exe, output)</p></td>
+<td><p>Runs the analysis through OpenSees.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">COMPAS FEA</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="compas_fea.html">compas_fea</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../api.html">API Reference</a><ul>
+  <li><a href="compas_fea.html">compas_fea</a><ul>
+      <li>Previous: <a href="compas_fea.cad.html" title="previous chapter">cad</a></li>
+      <li>Next: <a href="generated/compas_fea.fea.Writer.html" title="next chapter">Writer</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;Block Research Group - ETH Zurich.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

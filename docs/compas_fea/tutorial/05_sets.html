@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Sets &#8212; COMPAS FEA 0.3.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sections" href="06_sections.html" />
+    <link rel="prev" title="Elements" href="04_elements.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="sets">
+<h1>Sets</h1>
+<p>This page shows how sets can be used to gather groups of nodes, elements and surfaces within the <strong>Structure</strong> object, here given as <code class="docutils literal notranslate"><span class="pre">mdl</span></code>. A <strong>Set</strong> object is a group of components that can be conveniently referred to by a string name, for use with other classes and methods, and accessing specific data of a model after an analysis.</p>
+<section id="adding-sets">
+<h2>Adding sets</h2>
+<p>A set is a group of nodes, elements or surfaces that are given a string name. By assigning a name to such a group of components, it is easier and more meaningful to refer to them in other classes, instead of giving (and keeping track of) a long list of node or element numbers. A <strong>Set</strong> object is stored in the dictionary <code class="docutils literal notranslate"><span class="pre">.sets</span></code> through the method <code class="docutils literal notranslate"><span class="pre">.add_set()</span></code>, where the string key is the <code class="docutils literal notranslate"><span class="pre">name</span></code> of the set, the <code class="docutils literal notranslate"><span class="pre">type</span></code> of the set is the string <code class="docutils literal notranslate"><span class="pre">'node'</span></code>, <code class="docutils literal notranslate"><span class="pre">'element'</span></code>, <code class="docutils literal notranslate"><span class="pre">'surface_node'</span></code> or <code class="docutils literal notranslate"><span class="pre">'surface_element'</span></code>, and the <code class="docutils literal notranslate"><span class="pre">selection</span></code> stores the nodes, elements and surfaces of interest. To add node or element sets, use <code class="docutils literal notranslate"><span class="pre">.add_set()</span></code> as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mdl</span><span class="o">.</span><span class="n">add_set</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;nset_top&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;node&#39;</span><span class="p">,</span> <span class="n">selection</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>  <span class="c1"># add a note set &#39;nset_top&#39;</span>
+
+<span class="n">mdl</span><span class="o">.</span><span class="n">add_set</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;elset_shell&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;element&#39;</span><span class="p">,</span> <span class="n">selection</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>  <span class="c1"># add an element set &#39;elset_shell&#39;</span>
+</pre></div>
+</div>
+<p>If the <code class="docutils literal notranslate"><span class="pre">selection</span></code> is not given as a list, but instead as a single integer (to represent one node for example), it will be converted into a list with one item. Sets may be viewed and edited at any time through their string name keys, and then by viewing or changing the object attributes as needed. Like all other objects, printing the <strong>Set</strong> will give a short summary.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mdl</span><span class="o">.</span><span class="n">sets</span><span class="p">[</span><span class="s1">&#39;nset_top&#39;</span><span class="p">]</span>
+<span class="go">Set(nset_top)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">mdl</span><span class="o">.</span><span class="n">sets</span><span class="p">[</span><span class="s1">&#39;nset_top&#39;</span><span class="p">])</span>  <span class="c1"># give a summary of set `nset_top</span>
+
+<span class="go">compas_fea Set object</span>
+<span class="go">---------------------</span>
+<span class="go">name      : nset_top</span>
+<span class="go">type      : node</span>
+<span class="go">selection : [4]</span>
+<span class="go">index     : 1</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">mdl</span><span class="o">.</span><span class="n">sets</span><span class="p">[</span><span class="s1">&#39;elset_shell&#39;</span><span class="p">])</span>  <span class="c1"># give a summary of set `elset_shell</span>
+
+<span class="go">compas_fea Set object</span>
+<span class="go">---------------------</span>
+<span class="go">name      : elset_shell</span>
+<span class="go">type      : element</span>
+<span class="go">selection : [7, 8]</span>
+<span class="go">index     : 3</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mdl</span><span class="o">.</span><span class="n">sets</span><span class="p">[</span><span class="s1">&#39;elset_shell&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">selection</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># add an element to the element set</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mdl</span><span class="o">.</span><span class="n">sets</span><span class="p">[</span><span class="s1">&#39;elset_shell&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">selection</span>  <span class="c1"># show updated selection</span>
+<span class="go">[7, 8, 5]</span>
+</pre></div>
+</div>
+<p>From the node and element data of the <strong>Structure</strong> object, a surface can be defined by one of two surface set types. The first is by using <code class="docutils literal notranslate"><span class="pre">type='surface_node'</span></code> when creating a set with the <code class="docutils literal notranslate"><span class="pre">.add_set()</span></code> method. This will describe a surface by the nodes given in the <code class="docutils literal notranslate"><span class="pre">selection</span></code> list. This surface type can be created like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mdl</span><span class="o">.</span><span class="n">add_set</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;surf_set&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;surface_node&#39;</span><span class="p">,</span> <span class="n">selection</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>  <span class="c1"># surface node set</span>
+</pre></div>
+</div>
+<p>The second way to define a surface set is with <code class="docutils literal notranslate"><span class="pre">type='surface_element'</span></code>, where instead of a list of nodes for <code class="docutils literal notranslate"><span class="pre">selection</span></code>, a dictionary of element number keys and list of element string sides is given. So for example, to add sides 1 and 2 (<code class="docutils literal notranslate"><span class="pre">'S1'</span></code> and <code class="docutils literal notranslate"><span class="pre">'S2'</span></code>) of solid element 4, and the top side (<code class="docutils literal notranslate"><span class="pre">'SPOS'</span></code> for top and <code class="docutils literal notranslate"><span class="pre">`SNEG`</span></code> for bottom) of shell element 7 as an element surface set use the following. You can find which surface sides correspond to which, in the <strong>Elements</strong> topic.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mdl</span><span class="o">.</span><span class="n">add_set</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;surf_set&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;surface_element&#39;</span><span class="p">,</span> <span class="n">selection</span><span class="o">=</span><span class="p">{</span><span class="mi">4</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;S1&#39;</span><span class="p">,</span> <span class="s1">&#39;S2&#39;</span><span class="p">],</span> <span class="mi">7</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;SPOS&#39;</span><span class="p">]})</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">COMPAS FEA</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_basics.html">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_structure.html">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_nodes.html">Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_elements.html">Elements</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_sections.html">Sections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07_material.html">Materials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08_properties.html">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="09_loads.html">Loads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_displacements.html">Displacements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_steps.html">Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_analysis.html">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13_cad.html">CAD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14_app.html">App</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../tutorial.html">Tutorial</a><ul>
+      <li>Previous: <a href="04_elements.html" title="previous chapter">Elements</a></li>
+      <li>Next: <a href="06_sections.html" title="next chapter">Sections</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;Block Research Group - ETH Zurich.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

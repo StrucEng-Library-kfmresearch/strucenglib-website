@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Displacements &#8212; COMPAS FEA 0.3.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Steps" href="11_steps.html" />
+    <link rel="prev" title="Loads" href="09_loads.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="displacements">
+<h1>Displacements</h1>
+<p>This page shows how <strong>Displacement</strong> objects are added to the <strong>Structure</strong> object, here given as a <strong>Structure</strong> named <code class="docutils literal notranslate"><span class="pre">mdl</span></code>. <strong>Displacement</strong> objects can be used to describe boundary conditions or imposed displacements.</p>
+<section id="adding-displacements">
+<h2>Adding displacements</h2>
+<p><strong>Displacement</strong> objects are used to apply boundary conditions to the model as well as to impose movements directly at selected nodes. Along with <strong>Load</strong> objects, they form the main actions acting on a structural model during the analysis, to do so, they are combined with <strong>Step</strong> objects (see next topic). It is necessary for the first <strong>Step</strong> in the <strong>Structure</strong> to be associated with the boundary conditions represented by <strong>Displacement</strong> objects, these are those that do not change throughout the entire analysis. The following example shows how a <strong>PinnedDisplacement</strong> class is first imported, an object instantiated, and then this object added to the <code class="docutils literal notranslate"><span class="pre">.displacements</span></code> dictionary of the <strong>Structure</strong> object. All <strong>Displacement</strong> objects currently use only the global co-ordinate system with <code class="docutils literal notranslate"><span class="pre">axes='global'</span></code>, this will be improved later with the optional use of the <code class="docutils literal notranslate"><span class="pre">'local'</span></code> nodal system. The <code class="docutils literal notranslate"><span class="pre">nodes</span></code> that the displacement is applied to, should be the string name of the node set, or a list of node numbers.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">compas_fea.structure</span> <span class="kn">import</span> <span class="n">PinnedDisplacement</span>
+
+<span class="n">mdl</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">PinnedDisplacement</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;disp_pinned&#39;</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="s1">&#39;nset_base&#39;</span><span class="p">))</span>  <span class="c1"># add a PinnedDisplacement to &#39;nset_base&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="accessing-and-editing-displacements">
+<h2>Accessing and editing displacements</h2>
+<p>To access or edit the data stored on a <strong>Displacement</strong> object, use its string key and view or edit its attributes as needed from the <code class="docutils literal notranslate"><span class="pre">.displacements</span></code> dictionary. Like all other objects, printing a <strong>Displacement</strong> will show a summary to the terminal.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mdl</span><span class="o">.</span><span class="n">displacements</span><span class="p">[</span><span class="s1">&#39;disp_pinned&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">components</span>  <span class="c1"># show the components of Displacement &#39;disp_pinned&#39;</span>
+<span class="go">{&#39;x&#39;: 0, &#39;y&#39;: 0, &#39;z&#39;: 0, &#39;xx&#39;: None, &#39;yy&#39;: None, &#39;zz&#39;: None}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mdl</span><span class="o">.</span><span class="n">displacements</span><span class="p">[</span><span class="s1">&#39;disp_pinned&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nodes</span>  <span class="c1"># show the nodes that &#39;disp_pinned&#39; applies to</span>
+<span class="go">&#39;nset_base&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mdl</span><span class="o">.</span><span class="n">displacements</span><span class="p">[</span><span class="s1">&#39;disp_pinned&#39;</span><span class="p">]</span>  <span class="c1"># Displacement object name &#39;disp_pinned&#39;</span>
+<span class="go">PinnedDisplacement(disp_pinned)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">mdl</span><span class="o">.</span><span class="n">displacements</span><span class="p">[</span><span class="s1">&#39;disp_pinned&#39;</span><span class="p">])</span>  <span class="c1"># Summary of PinnedDisplacement(disp_pinned)</span>
+
+<span class="go">compas_fea PinnedDisplacement object</span>
+<span class="go">------------------------------------</span>
+<span class="go">name       : disp_pinned</span>
+<span class="go">nodes      : nset_base</span>
+<span class="go">components : {&#39;x&#39;: 0, &#39;y&#39;: 0, &#39;z&#39;: 0, &#39;xx&#39;: None, &#39;yy&#39;: None, &#39;zz&#39;: None}</span>
+<span class="go">axes       : global</span>
+</pre></div>
+</div>
+<p>The example <strong>PinnedDisplacement</strong> object above restrains translations in all directions but allows rotations about any axis, as indicated by the automatic assignment of zero for <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> and <code class="docutils literal notranslate"><span class="pre">z</span></code> for the translational degrees-of-freedom, and <code class="docutils literal notranslate"><span class="pre">None</span></code> for the rotational degrees-of-freedom <code class="docutils literal notranslate"><span class="pre">xx</span></code>, <code class="docutils literal notranslate"><span class="pre">yy</span></code> and <code class="docutils literal notranslate"><span class="pre">zz</span></code>. Non-zero values for any of the six components could be given to simulate support settlements or to perform a displacement controlled analysis, this is best performed with a <strong>GeneralDisplacement</strong> object.</p>
+</section>
+<section id="types">
+<h2>Types</h2>
+<p>Different <strong>Displacement</strong> object types are available from the classes in <strong>compas_fea.structure.displacement</strong>, these are detailed below:</p>
+<section id="general">
+<h3>General</h3>
+<p>A <strong>GeneralDisplacement</strong> object is used for manually defining all six spatial translational and rotational degrees-of-freedom, and so is the most general type of <strong>Displacement</strong> object. The object has components <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code>, <code class="docutils literal notranslate"><span class="pre">xx</span></code>, <code class="docutils literal notranslate"><span class="pre">yy</span></code> and <code class="docutils literal notranslate"><span class="pre">zz</span></code> all equal to <code class="docutils literal notranslate"><span class="pre">None</span></code> by default. The <code class="docutils literal notranslate"><span class="pre">name</span></code> of the object, and the nodes it should act on must both be given.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">compas_fea.structure</span> <span class="kn">import</span> <span class="n">GeneralDisplacement</span>
+
+<span class="n">mdl</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">GeneralDisplacement</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;disp_general&#39;</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="s1">&#39;nset_base&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">zz</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># define x, z, zz</span>
+</pre></div>
+</div>
+</section>
+<section id="pinned">
+<h3>Pinned</h3>
+<p>A <strong>PinnedDisplacement</strong> object is used for restraining all spatial translations, but still allowing rotations to occur. The object has components <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code> as 0 and <code class="docutils literal notranslate"><span class="pre">xx</span></code>, <code class="docutils literal notranslate"><span class="pre">yy</span></code>, <code class="docutils literal notranslate"><span class="pre">zz</span></code> as <code class="docutils literal notranslate"><span class="pre">None</span></code>, which are all defined automatically. The <code class="docutils literal notranslate"><span class="pre">name</span></code> of the object, and the nodes it should act on must both be given.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">compas_fea.structure</span> <span class="kn">import</span> <span class="n">PinnedDisplacement</span>
+
+<span class="n">mdl</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">PinnedDisplacement</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;disp_pinned&#39;</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="s1">&#39;nset_base&#39;</span><span class="p">))</span>  <span class="c1"># x, y and z are equal to 0 for &#39;nset_base&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="fixed">
+<h3>Fixed</h3>
+<p>A <strong>FixedDisplacement</strong> object is used for restraining all spatial translations and all rotations. The object has all components <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code>, <code class="docutils literal notranslate"><span class="pre">xx</span></code>, <code class="docutils literal notranslate"><span class="pre">yy</span></code>, <code class="docutils literal notranslate"><span class="pre">zz</span></code> as 0, which are all defined automatically. The <code class="docutils literal notranslate"><span class="pre">name</span></code> of the object, and the nodes it should act on must both be given.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">compas_fea.structure</span> <span class="kn">import</span> <span class="n">FixedDisplacement</span>
+
+<span class="n">mdl</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">FixedDisplacement</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;disp_fixed&#39;</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="s1">&#39;nset_base&#39;</span><span class="p">))</span>  <span class="c1"># x, y, z, xx, yy, zz are all 0 for &#39;nset_base&#39;</span>
+</pre></div>
+</div>
+<p>There are additionally three other types of fixed displacement objects, <strong>FixedDisplacementXX</strong>, <strong>FixedDisplacementYY</strong> and <strong>FixedDisplacementZZ</strong>, which all assert zero translations <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code> as 0, but with the rotations also fixed for the indicated axis. So, <strong>FixedDisplacementXX</strong> additionally clamps <code class="docutils literal notranslate"><span class="pre">xx=0</span></code>, <strong>FixedDisplacementYY</strong> clamps <code class="docutils literal notranslate"><span class="pre">yy=0</span></code> and <strong>FixedDisplacementZZ</strong> <code class="docutils literal notranslate"><span class="pre">zz=0</span></code>. These objects are created in the same way, for example like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">compas_fea.structure</span> <span class="kn">import</span> <span class="n">FixedDisplacementXX</span>
+
+<span class="n">mdl</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">FixedDisplacementXX</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;disp_fixedxx&#39;</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="s1">&#39;nset_base&#39;</span><span class="p">))</span>  <span class="c1"># x, y, z and xx are all 0 for &#39;nset_base&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="rollers">
+<h3>Rollers</h3>
+<p>There are six types of roller displacement objects, <strong>RollerDisplacementX</strong>, <strong>RollerDisplacementY</strong>,   <strong>RollerDisplacementZ</strong>, <strong>RollerDisplacementXY</strong>, <strong>RollerDisplacementYZ</strong> and <strong>RollerDisplacementXZ</strong>. These are all based on a <strong>PinnedDisplacement</strong> object, with the indicated translational degree(s)-of-freedom released.  So for example, <strong>RollerDisplacementX</strong> is released in <cite>x</cite> with <code class="docutils literal notranslate"><span class="pre">x=None</span></code>, and so has <code class="docutils literal notranslate"><span class="pre">y</span></code> and <code class="docutils literal notranslate"><span class="pre">z</span></code> as 0, while <strong>RollerDisplacementXY</strong> is released in both <cite>x</cite> and <cite>y</cite> with <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> as <code class="docutils literal notranslate"><span class="pre">None</span></code>, leaving only <code class="docutils literal notranslate"><span class="pre">z=0</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">compas_fea.structure</span> <span class="kn">import</span> <span class="n">RollerDisplacementXY</span>
+
+<span class="n">mdl</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">RollerDisplacementXY</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;disp_roller&#39;</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="s1">&#39;nset_base&#39;</span><span class="p">))</span>  <span class="c1"># only z equals 0 for &#39;nset_base&#39;</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">COMPAS FEA</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_basics.html">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_structure.html">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_nodes.html">Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_elements.html">Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_sets.html">Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_sections.html">Sections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07_material.html">Materials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08_properties.html">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="09_loads.html">Loads</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Displacements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_steps.html">Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_analysis.html">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13_cad.html">CAD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14_app.html">App</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../tutorial.html">Tutorial</a><ul>
+      <li>Previous: <a href="09_loads.html" title="previous chapter">Loads</a></li>
+      <li>Next: <a href="11_steps.html" title="next chapter">Steps</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;Block Research Group - ETH Zurich.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
