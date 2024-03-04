@@ -3,3 +3,4 @@ The StrucEngLib is a open source framework for the numerical analysis of enginee
 !!! note
     - Note that the StrucEngLib is still under developement and therefore could contain bugs. In case you find bugs or would like to request additional functionality, please submit an issue using the [Issue Tracker](https://github.com/StrucEng-Library-kfmresearch/strucenglib-website/issues).
 
+You can find an example under this [Link](https://github.com/StrucEng-Library-kfmresearch/strucenglib-snippets/tree/ansys/examples).
